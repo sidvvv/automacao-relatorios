@@ -44,3 +44,47 @@ def vendas_por_produto(df):
         .round(2)
         .sort_values(ascending=False)
     )
+
+def faturamento_mensal_dashboard(df: pd.DataFrame) -> list:
+    """Retorna o faturamento por mês para o dashboard."""
+
+    dados = df.copy()
+
+    dados["mes"] = dados["data"].dt.strftime("%Y-%m")
+
+    agrupado = (
+        dados.groupby("mes")["valor"]
+        .sum()
+        .sort_index()
+    )
+
+    return [
+        {
+            "mes": mes,
+            "faturamento": round(float(total), 2)
+        }
+        for mes, total in agrupado.items()
+    ]
+
+
+def ranking_produtos_dashboard(df: pd.DataFrame) -> list:
+    """Retorna o faturamento e participação por produto."""
+
+    agrupado = (
+        df.groupby("produto")["valor"]
+        .sum()
+        .sort_values(ascending=False)
+    )
+
+    total_geral = float(agrupado.sum())
+
+    return [
+        {
+            "produto": str(produto),
+            "faturamento": round(float(valor), 2),
+            "participacao": round(
+                float(valor) / total_geral * 100, 2
+            ) if total_geral != 0 else 0.0
+        }
+        for produto, valor in agrupado.items()
+    ]
