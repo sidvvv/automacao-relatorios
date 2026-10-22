@@ -1,0 +1,1238 @@
+data,produto,cliente,quantidade,valor
+2026-03-06, CALÇA JEANS ,Cliente 061,2,259.8
+2026-01-21,Calça jeans,Cliente 004,1,129.9
+2026-06-06,Jaqueta,Cliente 022,5,1249.5
+2026-10-09,Jaqueta,Cliente 004,2,499.8
+2026-06-08,Meia,Cliente 057,1,14.9
+2026-09-13,Jaqueta,Cliente 057,3,749.7
+2026-09-01,Boné,Cliente 058,2,79.8
+2026-03-26,Calça jeans,Cliente 057,2,259.8
+2026-05-06,Jaqueta,Cliente 038,5,1249.5
+2026-03-25,Camiseta,Cliente 073,3,149.7
+2026-07-17, TÊNIS ,Cliente 011,2,439.8
+2026-08-03,Boné,Cliente 020,3,119.7
+2026-10-09,Tênis,Cliente 043,4,879.6
+2026-01-28,Boné,Cliente 013,4,159.6
+2026-07-26,Camiseta,Cliente 016,2,99.8
+2026-04-22,Jaqueta,Cliente 012,4,999.6
+2026-04-02,Calça jeans,Cliente 039,3,389.7
+2026-04-26,Boné,Cliente 021,5,199.5
+2026-05-26,Jaqueta,Cliente 004,5,1249.5
+2026-08-22,Boné,Cliente 035,4,159.6
+2026-06-29,Calça jeans,Cliente 019,3,389.7
+2026-04-17,Tênis,Cliente 063,3,659.7
+2026-08-11,Camiseta,Cliente 055,2,99.8
+2026-05-12,Meia,Cliente 063,3,44.7
+2026-03-10,Meia,Cliente 006,3,44.7
+2026-08-03,Jaqueta,Cliente 077,4,999.6
+2026-08-12,Boné,Cliente 003,1,39.9
+2026-07-03,Calça jeans,Cliente 074,4,519.6
+2026-08-27,Meia,Cliente 040,1,14.9
+2026-02-17,Calça jeans,Cliente 047,3,389.7
+2026-01-21,Boné,Cliente 056,1,39.9
+2026-09-16,Tênis,Cliente 051,4,879.6
+2026-06-08,Meia,Cliente 072,1,14.9
+2026-08-09,Camiseta,Cliente 018,1,49.9
+2026-07-08,Boné,Cliente 022,3,119.7
+2026-01-27,Meia,Cliente 045,5,74.5
+2026-04-27,Boné,Cliente 053,4,159.6
+2026-10-11,Calça jeans,Cliente 027,1,129.9
+2026-05-22,Tênis,Cliente 067,2,439.8
+2026-04-28,Jaqueta,Cliente 032,4,999.6
+2026-07-17,Jaqueta,Cliente 049,1,249.9
+2026-05-21,Jaqueta,Cliente 008,4,999.6
+2026-07-27,Tênis,Cliente 003,1,219.9
+2026-10-10,Boné,Cliente 007,3,119.7
+2026-09-27,Meia,Cliente 049,4,59.6
+2026-08-11,Boné,Cliente 021,2,79.8
+2026-01-21,Jaqueta,Cliente 080,2,499.8
+2026-09-24,Meia,Cliente 035,1,14.9
+2026-01-07,Tênis,Cliente 067,4,879.6
+2026-01-02,Tênis,Cliente 043,1,219.9
+2026-02-25,Calça jeans,Cliente 054,3,389.7
+2026-08-03,Calça jeans,Cliente 059,4,519.6
+2026-07-08,Boné,Cliente 076,2,79.8
+2026-06-19,Calça jeans,Cliente 013,5,649.5
+2026-01-25,Camiseta,Cliente 014,5,249.5
+2026-09-11,Jaqueta,Cliente 053,5,1249.5
+2026-02-02,Jaqueta,Cliente 060,2,499.8
+2026-07-30,Calça jeans,Cliente 032,3,
+2026-08-27,Jaqueta,Cliente 056,4,999.6
+2026-09-23,Calça jeans,Cliente 060,2,259.8
+2026-10-04,Boné,Cliente 018,1,39.9
+2026-03-12,Jaqueta,Cliente 054,5,1249.5
+2026-06-07,Boné,Cliente 006,5,199.5
+2026-04-30,Tênis,Cliente 013,1,219.9
+2026-05-28,Calça jeans,Cliente 057,3,389.7
+2026-03-16,Camiseta,Cliente 018,3,149.7
+2026-08-22,Jaqueta,Cliente 044,2,499.8
+2026-01-29,Jaqueta,Cliente 059,4,999.6
+2026-06-20,Boné,Cliente 039,2,79.8
+2026-05-27,Boné,Cliente 065,5,199.5
+2026-08-30,Boné,Cliente 032,4,159.6
+2026-07-31,Calça jeans,Cliente 078,2,259.8
+2026-08-20,Camiseta,Cliente 072,4,199.6
+2026-08-09,Camiseta,Cliente 023,5,249.5
+2026-02-27,Tênis,Cliente 043,2,439.8
+2026-01-02,Calça jeans,Cliente 050,4,519.6
+2026-06-02,Camiseta,,1,49.9
+2026-07-25,Boné,Cliente 008,2,79.8
+2026-06-08,Boné,Cliente 023,5,199.5
+2026-07-11,Tênis,Cliente 020,3,659.7
+2026-01-18,Boné,Cliente 038,1,39.9
+2026-10-09,Tênis,Cliente 061,4,879.6
+2026-06-13,Calça jeans,Cliente 035,4,519.6
+2026-07-22,Tênis,Cliente 005,1,219.9
+2026-04-14,Camiseta,Cliente 080,3,149.7
+2026-01-21,Tênis,Cliente 008,2,439.8
+2026-04-16,Calça jeans,Cliente 008,2,259.8
+2026-08-21,Boné,Cliente 001,2,79.8
+2026-08-12,Jaqueta,Cliente 012,2,499.8
+2026-05-14,Camiseta,Cliente 014,3,149.7
+2026-10-06,Tênis,Cliente 055,4,879.6
+2026-05-04,Jaqueta,Cliente 029,4,999.6
+2026-09-19,Camiseta,Cliente 048,1,49.9
+2026-03-19,Meia,Cliente 053,2,29.8
+2026-02-05,Meia,Cliente 019,4,59.6
+2026-09-04,Meia,Cliente 045,2,29.8
+2026-05-28,Boné,Cliente 052,4,159.6
+2026-08-30,Camiseta,Cliente 018,3,149.7
+2026-06-22,Tênis,Cliente 071,3,659.7
+2026-01-05,Camiseta,Cliente 018,1,49.9
+2026-03-17,Tênis,Cliente 009,5,1099.5
+2026-08-23,Calça jeans,Cliente 009,4,519.6
+2026-05-16,Calça jeans,Cliente 005,5,649.5
+2026-07-28,Boné,Cliente 063,2,79.8
+2026-09-05,Jaqueta,Cliente 066,4,999.6
+2026-06-17,Camiseta,Cliente 054,3,149.7
+2026-03-15,Jaqueta,Cliente 039,3,749.7
+2026-07-14,Calça jeans,Cliente 023,4,519.6
+2026-09-12,Meia,Cliente 075,2,
+2026-06-01,Meia,Cliente 034,4,59.6
+2026-04-11,Calça jeans,Cliente 059,4,519.6
+2026-04-25,Meia,Cliente 042,4,59.6
+2026-07-19,Calça jeans,Cliente 070,5,
+2026-07-06, CAMISETA ,Cliente 050,4,199.6
+2026-07-15,Meia,Cliente 050,1,14.9
+2026-06-12,Jaqueta,Cliente 057,5,1249.5
+2026-07-18,Jaqueta,Cliente 059,2,499.8
+2026-03-12,Calça jeans,Cliente 033,5,649.5
+2026-06-25,Boné,Cliente 063,2,79.8
+2026-07-19,Jaqueta,Cliente 001,4,999.6
+2026-06-14,Camiseta,Cliente 031,4,199.6
+2026-07-16,Calça jeans,Cliente 055,5,649.5
+2026-05-31,Camiseta,Cliente 029,1,49.9
+2026-10-02,Camiseta,Cliente 003,4,199.6
+2026-05-08,Tênis,Cliente 009,2,439.8
+2026-09-16,Boné,Cliente 060,2,79.8
+2026-10-01,Meia,Cliente 061,2,29.8
+2026-02-24,Camiseta,Cliente 032,4,199.6
+2026-01-16,Meia,Cliente 031,1,14.9
+2026-05-27,Meia,Cliente 030,4,59.6
+2026-05-20,Camiseta,Cliente 016,3,149.7
+2026-03-15,Camiseta,Cliente 051,2,99.8
+2026-05-16,Meia,Cliente 027,5,74.5
+2026-09-08,Meia,Cliente 020,3,44.7
+2026-03-26,Meia,Cliente 032,1,
+2026-06-16,Calça jeans,Cliente 026,3,389.7
+2026-01-11,Camiseta,Cliente 035,2,99.8
+2026-10-16,Calça jeans,Cliente 008,3,389.7
+2026-04-26,Jaqueta,Cliente 067,5,1249.5
+2026-09-05,Calça jeans,Cliente 045,5,649.5
+2026-06-10,Tênis,Cliente 036,4,879.6
+2026-07-24,Camiseta,Cliente 043,5,249.5
+2026-06-07,Camiseta,Cliente 014,4,199.6
+2026-08-18,Meia,Cliente 079,4,59.6
+2026-07-29,Meia,Cliente 015,3,44.7
+2026-01-27,Meia,Cliente 037,4,59.6
+2026-08-05,Meia,Cliente 049,2,29.8
+2026-04-29,Camiseta,Cliente 069,5,249.5
+2026-08-22,Calça jeans,Cliente 001,4,519.6
+2026-09-01,Jaqueta,Cliente 072,5,1249.5
+2026-03-07,Boné,Cliente 068,3,119.7
+2026-07-02,Tênis,Cliente 009,1,219.9
+2026-03-28,Jaqueta,Cliente 042,5,1249.5
+2026-01-07,Meia,Cliente 068,3,44.7
+2026-10-16,Jaqueta,Cliente 025,2,499.8
+2026-04-25,Meia,Cliente 014,4,59.6
+2026-09-26,Meia,Cliente 047,1,14.9
+2026-09-18,Camiseta,Cliente 047,4,199.6
+2026-07-15,Camiseta,Cliente 019,1,49.9
+2026-10-11,Camiseta,Cliente 020,1,49.9
+2026-07-29,Boné,Cliente 043,3,119.7
+2026-09-16,Camiseta,Cliente 059,4,199.6
+2026-01-28,Boné,Cliente 025,4,159.6
+2026-07-03,Tênis,Cliente 027,1,219.9
+2026-08-07,Camiseta,Cliente 023,4,199.6
+2026-05-18,Boné,Cliente 054,2,79.8
+2026-08-01,Meia,Cliente 013,2,29.8
+2026-09-27,Calça jeans,Cliente 033,2,259.8
+2026-10-01,Meia,Cliente 032,2,29.8
+2026-05-08,Meia,Cliente 013,5,74.5
+2026-06-19,Boné,Cliente 073,4,159.6
+2026-08-17,Camiseta,Cliente 068,5,249.5
+2026-09-02, CAMISETA ,Cliente 065,1,49.9
+2026-04-03,Calça jeans,Cliente 038,5,649.5
+2026-08-03,Jaqueta,Cliente 021,5,1249.5
+2026-06-15,Meia,Cliente 008,2,29.8
+2026-01-11,Boné,Cliente 074,4,159.6
+2026-10-03,Camiseta,Cliente 026,5,249.5
+2026-03-22,Camiseta,Cliente 053,5,249.5
+2026-09-02,Meia,Cliente 026,4,59.6
+2026-01-04,Camiseta,Cliente 053,1,49.9
+2026-03-27,Jaqueta,Cliente 057,4,999.6
+2026-07-31,Camiseta,Cliente 050,3,149.7
+2026-09-01,Camiseta,Cliente 058,1,49.9
+2026-09-05,Calça jeans,Cliente 014,4,519.6
+2026-06-07,Boné,Cliente 004,5,199.5
+2026-06-22,Camiseta,Cliente 052,4,199.6
+2026-07-24,Meia,Cliente 048,3,44.7
+2026-03-16,Tênis,Cliente 032,4,879.6
+2026-05-02,Jaqueta,Cliente 039,3,749.7
+2026-02-21,Meia,Cliente 018,4,59.6
+2026-04-27,Jaqueta,Cliente 071,4,999.6
+2026-07-14,Jaqueta,Cliente 022,2,499.8
+2026-03-18,Camiseta,Cliente 019,4,199.6
+2026-07-28,Calça jeans,Cliente 063,2,259.8
+2026-07-29,Camiseta,Cliente 020,2,99.8
+2026-01-14,Jaqueta,Cliente 011,5,1249.5
+2026-06-03,Meia,Cliente 071,5,74.5
+2026-06-05,Camiseta,Cliente 066,1,49.9
+2026-01-08,Meia,Cliente 042,3,44.7
+2026-07-04,Boné,Cliente 033,1,39.9
+2026-03-13,Boné,Cliente 004,3,119.7
+2026-08-14,Jaqueta,Cliente 045,2,499.8
+2026-05-07,Tênis,Cliente 036,2,439.8
+2026-10-06,Meia,Cliente 046,3,44.7
+2026-07-17,Jaqueta,Cliente 074,1,249.9
+2026-03-29,Camiseta,Cliente 049,3,149.7
+2026-03-06,Tênis,Cliente 073,2,439.8
+2026-09-29,Boné,Cliente 038,5,199.5
+2026-02-20,Boné,Cliente 007,5,199.5
+2026-01-14,Jaqueta,Cliente 051,5,1249.5
+2026-02-02,Boné,Cliente 034,1,39.9
+2026-08-23,Boné,Cliente 011,3,119.7
+2026-03-18,Meia,Cliente 043,5,74.5
+2026-05-15,Boné,Cliente 063,1,39.9
+2026-05-02,Camiseta,Cliente 076,3,149.7
+2026-03-21,Calça jeans,Cliente 010,2,259.8
+2026-03-13,Tênis,Cliente 011,4,879.6
+2026-07-04,Jaqueta,Cliente 069,1,249.9
+2026-03-21,Boné,Cliente 036,3,119.7
+2026-08-20,Tênis,Cliente 040,2,439.8
+2026-02-04,Camiseta,Cliente 002,5,249.5
+2026-02-06,Jaqueta,Cliente 061,5,1249.5
+2026-04-18,Meia,Cliente 057,4,59.6
+2026-08-07,Meia,Cliente 015,3,44.7
+2026-04-26,Tênis,Cliente 055,5,1099.5
+2026-09-04,Meia,Cliente 045,2,29.8
+2026-09-16, BONÉ ,Cliente 018,5,199.5
+2026-04-30,Jaqueta,Cliente 043,2,499.8
+2026-09-01,Calça jeans,Cliente 071,2,259.8
+2026-05-29,Tênis,Cliente 006,2,439.8
+2026-03-30,Calça jeans,Cliente 017,5,649.5
+2026-02-28,Meia,Cliente 045,1,14.9
+2026-07-03,Jaqueta,Cliente 002,1,249.9
+2026-05-15,Camiseta,Cliente 045,4,199.6
+2026-08-26,Tênis,Cliente 076,4,879.6
+2026-01-11,Calça jeans,Cliente 080,2,259.8
+2026-05-29,Meia,Cliente 074,3,44.7
+2026-07-25,Jaqueta,Cliente 009,1,249.9
+2026-07-05,Jaqueta,Cliente 071,2,499.8
+2026-02-16,Boné,Cliente 008,1,39.9
+2026-07-23,Tênis,Cliente 011,3,659.7
+2026-05-24,Camiseta,Cliente 070,1,49.9
+2026-06-13,Jaqueta,Cliente 009,3,749.7
+2026-07-14,Boné,Cliente 011,2,79.8
+2026-09-25,Camiseta,Cliente 054,4,199.6
+2026-01-18,Camiseta,Cliente 058,1,49.9
+2026-07-21,Camiseta,Cliente 069,5,249.5
+2026-01-09,Boné,Cliente 068,1,39.9
+2026-04-05,Calça jeans,Cliente 024,4,519.6
+2026-05-27,Jaqueta,Cliente 069,1,249.9
+2026-05-05,Boné,Cliente 006,2,79.8
+2026-10-06,Tênis,Cliente 068,4,879.6
+2026-10-02,Calça jeans,Cliente 020,5,649.5
+2026-08-12,Meia,Cliente 078,3,44.7
+2026-04-22,Tênis,Cliente 026,5,1099.5
+2026-02-11,Meia,Cliente 061,3,44.7
+2026-01-17,Calça jeans,Cliente 054,1,129.9
+2026-05-04,Calça jeans,Cliente 033,3,389.7
+2026-02-28,Jaqueta,Cliente 069,1,249.9
+2026-02-14,Meia,Cliente 076,5,74.5
+2026-10-14,Calça jeans,Cliente 028,5,649.5
+2026-09-06,Calça jeans,Cliente 025,3,389.7
+2026-06-23,Camiseta,Cliente 014,4,199.6
+2026-04-25,Meia,Cliente 044,5,74.5
+2026-07-05,Calça jeans,Cliente 066,2,259.8
+2026-03-01,Camiseta,Cliente 059,4,199.6
+2026-02-04,Calça jeans,Cliente 020,2,259.8
+2026-09-18,Calça jeans,Cliente 018,5,649.5
+2026-02-23,Camiseta,Cliente 038,4,199.6
+2026-02-06,Tênis,Cliente 008,2,439.8
+2026-02-15,Jaqueta,Cliente 064,4,999.6
+2026-04-26,Camiseta,Cliente 051,2,99.8
+2026-04-20,Boné,Cliente 066,4,159.6
+2026-05-03, TÊNIS ,Cliente 064,1,219.9
+2026-10-07,Meia,Cliente 028,4,59.6
+2026-02-18,Camiseta,Cliente 072,3,149.7
+2026-08-30,Jaqueta,Cliente 010,2,499.8
+2026-03-04,Calça jeans,Cliente 007,3,389.7
+2026-02-08,Tênis,Cliente 026,2,439.8
+2026-05-24,Boné,Cliente 080,5,199.5
+2026-06-10,Calça jeans,Cliente 053,3,389.7
+2026-06-13,Tênis,Cliente 021,5,1099.5
+2026-10-16, CAMISETA ,Cliente 002,5,249.5
+2026-05-06,Meia,Cliente 020,5,74.5
+2026-03-21,Tênis,Cliente 028,3,659.7
+2026-02-06,Meia,Cliente 030,4,59.6
+2026-06-27,Tênis,Cliente 057,1,219.9
+2026-07-20,Meia,Cliente 073,1,14.9
+2026-03-27,Boné,Cliente 048,5,199.5
+2026-10-13,Boné,Cliente 071,1,39.9
+2026-03-20,Boné,Cliente 064,1,39.9
+2026-08-28,Meia,Cliente 017,2,29.8
+2026-10-02,Meia,Cliente 037,3,44.7
+2026-07-25,Boné,Cliente 068,5,199.5
+2026-01-26,Calça jeans,Cliente 011,2,259.8
+2026-05-07,Meia,Cliente 051,3,44.7
+2026-02-09,Meia,Cliente 073,3,44.7
+2026-08-10,Boné,Cliente 047,1,39.9
+2026-10-03,Meia,Cliente 079,5,74.5
+2026-02-01,Boné,Cliente 027,4,159.6
+2026-10-15,Calça jeans,Cliente 069,2,259.8
+2026-08-26,Boné,Cliente 068,2,79.8
+2026-04-24,Camiseta,Cliente 026,4,199.6
+2026-06-01,Jaqueta,Cliente 020,4,999.6
+2026-02-09,Camiseta,Cliente 064,3,149.7
+2026-08-16,Boné,Cliente 012,2,79.8
+2026-03-20,Jaqueta,Cliente 073,3,749.7
+2026-10-11,Camiseta,Cliente 030,5,249.5
+2026-09-08,Jaqueta,Cliente 003,3,749.7
+2026-03-12,Jaqueta,Cliente 013,3,749.7
+2026-09-11,Boné,Cliente 035,2,79.8
+2026-06-06, TÊNIS ,Cliente 036,5,1099.5
+2026-07-23,Camiseta,Cliente 061,3,149.7
+2026-01-16,Meia,Cliente 019,2,29.8
+2026-07-18,Jaqueta,Cliente 079,3,749.7
+2026-04-15,Camiseta,Cliente 070,3,149.7
+2026-06-08,Camiseta,Cliente 044,4,199.6
+2026-08-17,Tênis,Cliente 023,4,879.6
+2026-08-07,Boné,Cliente 014,4,159.6
+2026-06-10,Boné,Cliente 074,1,39.9
+2026-05-18,Meia,Cliente 042,5,74.5
+2026-05-01,Jaqueta,Cliente 037,1,249.9
+2026-04-12,Camiseta,Cliente 057,1,49.9
+2026-03-31,Meia,Cliente 054,1,14.9
+2026-05-21,Calça jeans,Cliente 017,5,649.5
+2026-02-28,Jaqueta,Cliente 035,1,249.9
+2026-06-28,Calça jeans,Cliente 004,4,519.6
+2026-06-30,Calça jeans,Cliente 007,2,259.8
+2026-01-02,Camiseta,Cliente 053,2,99.8
+2026-02-02,Meia,Cliente 075,5,74.5
+2026-04-08,Jaqueta,Cliente 003,1,249.9
+2026-06-06,Jaqueta,Cliente 027,1,249.9
+2026-06-05,Camiseta,Cliente 052,4,199.6
+2026-09-20,Meia,Cliente 003,4,59.6
+2026-09-20,Meia,Cliente 003,4,59.6
+2026-07-01,Calça jeans,Cliente 027,3,389.7
+2026-03-15,Boné,Cliente 034,4,159.6
+2026-01-20,Camiseta,Cliente 049,3,149.7
+2026-03-02,Camiseta,Cliente 037,5,249.5
+2026-02-25,Calça jeans,Cliente 020,5,649.5
+2026-04-24,Meia,Cliente 046,1,14.9
+2026-02-22,Calça jeans,Cliente 074,3,389.7
+2026-01-25,Meia,Cliente 015,1,14.9
+2026-02-15,Camiseta,Cliente 015,1,49.9
+2026-02-08,Meia,Cliente 076,4,59.6
+2026-08-19,Tênis,Cliente 060,1,219.9
+2026-02-03,Jaqueta,Cliente 027,1,249.9
+2026-10-04,Tênis,Cliente 064,5,1099.5
+2026-04-18,Tênis,Cliente 044,3,659.7
+2026-06-13,Tênis,Cliente 074,2,439.8
+2026-03-07,Tênis,Cliente 023,3,659.7
+2026-05-05,Tênis,Cliente 060,5,1099.5
+2026-06-03,Boné,Cliente 076,5,199.5
+2026-03-23,Camiseta,Cliente 055,2,99.8
+2026-08-23,Boné,Cliente 019,5,199.5
+2026-01-27,Camiseta,Cliente 073,4,199.6
+2026-06-06,Jaqueta,Cliente 073,4,999.6
+2026-06-05,Camiseta,Cliente 040,3,149.7
+2026-05-14, CALÇA JEANS ,Cliente 049,1,129.9
+2026-06-17,Boné,Cliente 075,4,159.6
+2026-08-06,Tênis,Cliente 063,4,879.6
+2026-01-20,Meia,Cliente 044,5,74.5
+2026-06-26,Meia,Cliente 052,3,44.7
+2026-03-11,Jaqueta,Cliente 051,2,499.8
+2026-05-14,Calça jeans,Cliente 050,1,129.9
+2026-01-01,Boné,Cliente 070,5,199.5
+2026-06-25, CAMISETA ,Cliente 016,1,49.9
+2026-06-19,Camiseta,Cliente 015,3,149.7
+2026-04-22,Calça jeans,Cliente 008,3,389.7
+2026-01-05,Boné,Cliente 060,3,119.7
+2026-02-05,Tênis,Cliente 025,5,1099.5
+2026-04-04,Meia,Cliente 043,5,74.5
+2026-08-09,Boné,Cliente 013,5,199.5
+2026-03-16,Boné,Cliente 050,5,199.5
+2026-07-17,Tênis,Cliente 007,1,219.9
+2026-08-01,Meia,Cliente 057,4,59.6
+2026-09-10,Calça jeans,Cliente 049,4,519.6
+2026-07-17,Tênis,Cliente 065,1,219.9
+2026-09-05,Camiseta,Cliente 073,4,199.6
+2026-09-21,Calça jeans,Cliente 072,3,389.7
+2026-01-06,Jaqueta,Cliente 021,1,249.9
+2026-07-28,Boné,Cliente 036,5,199.5
+2026-04-15,Camiseta,Cliente 020,5,249.5
+2026-05-25,Jaqueta,Cliente 039,5,1249.5
+2026-06-06,Boné,Cliente 075,2,79.8
+2026-05-26,Camiseta,Cliente 061,5,249.5
+2026-04-06,Tênis,Cliente 036,2,439.8
+2026-02-14,Jaqueta,Cliente 009,2,499.8
+2026-06-19,Camiseta,Cliente 027,1,49.9
+2026-08-31,Jaqueta,Cliente 032,2,499.8
+2026-10-06,Tênis,Cliente 049,5,1099.5
+2026-03-28,Calça jeans,Cliente 010,3,389.7
+2026-03-14,Boné,Cliente 036,1,39.9
+2026-02-05,Camiseta,Cliente 077,2,99.8
+2026-07-18,Boné,Cliente 005,4,159.6
+2026-02-10,Camiseta,Cliente 011,2,99.8
+2026-02-06,Meia,Cliente 068,5,74.5
+2026-04-02,Camiseta,Cliente 033,1,49.9
+2026-05-05,Camiseta,Cliente 014,5,249.5
+2026-02-25,Tênis,Cliente 058,5,1099.5
+2026-05-04,Camiseta,Cliente 035,2,99.8
+2026-05-01,Jaqueta,Cliente 061,4,999.6
+2026-09-12,Boné,Cliente 003,3,119.7
+2026-06-11,Jaqueta,Cliente 055,3,749.7
+2026-09-03,Tênis,Cliente 068,4,879.6
+2026-04-16,Meia,Cliente 067,3,44.7
+2026-02-28,Meia,Cliente 013,4,59.6
+2026-01-30,Meia,Cliente 032,2,29.8
+2026-09-29,Boné,Cliente 007,1,39.9
+2026-08-02,Jaqueta,Cliente 053,3,749.7
+2026-08-17,Tênis,Cliente 006,2,439.8
+2026-07-06,Camiseta,Cliente 017,5,249.5
+2026-05-12,Calça jeans,Cliente 024,4,519.6
+2026-03-14,Camiseta,Cliente 045,5,249.5
+2026-03-27,Meia,Cliente 079,3,44.7
+2026-02-12,Calça jeans,Cliente 040,3,389.7
+2026-01-26,Tênis,Cliente 013,4,879.6
+2026-06-03,Tênis,Cliente 006,1,219.9
+2026-01-28,Jaqueta,Cliente 013,3,749.7
+2026-08-08,Boné,Cliente 036,1,39.9
+2026-01-29,Jaqueta,Cliente 040,5,1249.5
+2026-08-04,Camiseta,Cliente 068,2,99.8
+2026-10-11,Boné,Cliente 006,5,199.5
+2026-01-16,Tênis,Cliente 008,4,879.6
+2026-08-07,Meia,Cliente 066,4,59.6
+2026-09-16,Calça jeans,Cliente 063,3,389.7
+2026-06-06,Camiseta,Cliente 030,4,199.6
+2026-07-10,Calça jeans,Cliente 011,4,519.6
+2026-08-23,Calça jeans,Cliente 005,1,129.9
+2026-01-29,Calça jeans,Cliente 001,4,519.6
+2026-08-07,Meia,Cliente 066,4,59.6
+2026-06-28,Tênis,Cliente 009,2,439.8
+2026-02-13,Boné,Cliente 037,2,79.8
+2026-06-19,Tênis,Cliente 011,2,439.8
+2026-03-23,Calça jeans,Cliente 063,5,649.5
+2026-03-29,Camiseta,Cliente 011,1,49.9
+2026-08-11,Jaqueta,Cliente 017,1,249.9
+2026-02-16,Meia,Cliente 068,1,14.9
+2026-05-17,Calça jeans,Cliente 043,4,519.6
+2026-08-23,Camiseta,Cliente 046,1,49.9
+2026-10-16,Jaqueta,Cliente 025,2,499.8
+2026-04-19,Calça jeans,Cliente 018,3,389.7
+2026-03-14,Camiseta,Cliente 015,2,99.8
+2026-07-05,Tênis,Cliente 074,5,1099.5
+2026-07-28,Boné,Cliente 036,5,199.5
+2026-05-21,Boné,Cliente 076,3,119.7
+2026-10-09,Boné,Cliente 062,4,159.6
+2026-03-30,Calça jeans,Cliente 071,2,259.8
+2026-10-11,Camiseta,Cliente 075,3,149.7
+2026-09-25,Camiseta,Cliente 041,4,199.6
+2026-08-31,Meia,Cliente 005,4,59.6
+2026-04-01,Tênis,Cliente 010,4,879.6
+2026-03-02,Camiseta,Cliente 031,4,199.6
+2026-04-12,Camiseta,Cliente 070,5,249.5
+2026-05-25,Boné,Cliente 049,4,159.6
+2026-06-09,Boné,Cliente 042,3,119.7
+2026-06-03,Calça jeans,Cliente 011,2,259.8
+2026-04-11,Calça jeans,Cliente 059,4,519.6
+2026-03-27,Boné,Cliente 028,2,79.8
+2026-05-05,Meia,Cliente 042,4,59.6
+2026-04-13,Calça jeans,Cliente 068,4,519.6
+2026-01-27,Tênis,Cliente 043,5,1099.5
+2026-02-27,Tênis,Cliente 038,3,659.7
+2026-02-06,Meia,Cliente 078,3,44.7
+2026-04-08,Camiseta,Cliente 016,2,99.8
+2026-04-26,Calça jeans,Cliente 026,3,389.7
+2026-05-22,Camiseta,Cliente 025,4,199.6
+2026-05-08,Boné,Cliente 036,4,159.6
+2026-04-12,Camiseta,Cliente 036,3,149.7
+2026-08-24,Tênis,Cliente 069,1,219.9
+2026-03-08, JAQUETA ,Cliente 021,3,749.7
+2026-06-10,Tênis,Cliente 008,2,439.8
+2026-01-12,Meia,Cliente 051,3,44.7
+2026-05-30,Camiseta,Cliente 005,2,99.8
+2026-08-13,Boné,Cliente 058,1,39.9
+2026-04-27,Meia,Cliente 066,1,14.9
+2026-01-22,Camiseta,Cliente 030,5,249.5
+2026-02-09,Calça jeans,Cliente 017,4,519.6
+2026-08-17,Meia,Cliente 002,3,44.7
+2026-03-05,Camiseta,Cliente 076,2,99.8
+2026-09-17,Boné,Cliente 054,5,199.5
+2026-09-01,Calça jeans,Cliente 035,5,649.5
+2026-09-21,Calça jeans,Cliente 060,4,519.6
+2026-05-16,Tênis,Cliente 050,4,879.6
+2026-05-07,Boné,Cliente 039,1,39.9
+2026-01-26,Calça jeans,Cliente 038,1,129.9
+2026-09-14,Meia,Cliente 023,3,44.7
+2026-07-19,Meia,Cliente 041,2,29.8
+2026-02-21,Meia,Cliente 044,4,59.6
+2026-02-22,Jaqueta,Cliente 004,4,999.6
+2026-03-16,Calça jeans,Cliente 033,1,129.9
+2026-02-11,Jaqueta,Cliente 043,4,999.6
+2026-09-14, TÊNIS ,Cliente 035,5,1099.5
+2026-06-13,Calça jeans,Cliente 038,4,519.6
+2026-04-07,Boné,Cliente 031,3,119.7
+2026-03-14,Meia,Cliente 021,5,74.5
+2026-01-16,Jaqueta,Cliente 064,4,999.6
+2026-02-02,Calça jeans,Cliente 044,2,259.8
+2026-08-02,Jaqueta,Cliente 069,4,999.6
+2026-03-31,Jaqueta,Cliente 061,1,249.9
+2026-05-17,Camiseta,Cliente 071,2,99.8
+2026-10-15,Camiseta,Cliente 072,5,249.5
+2026-05-08,Tênis,Cliente 010,4,879.6
+2026-03-03,Meia,Cliente 002,2,29.8
+2026-06-06,Tênis,Cliente 058,3,659.7
+2026-02-24, TÊNIS ,Cliente 043,5,1099.5
+2026-03-09,Calça jeans,Cliente 070,2,259.8
+2026-08-19,Camiseta,Cliente 032,3,149.7
+2026-03-31,Meia,Cliente 079,2,29.8
+2026-06-10,Tênis,Cliente 031,2,439.8
+2026-01-26,Camiseta,Cliente 022,4,199.6
+2026-05-14,Calça jeans,Cliente 041,3,389.7
+2026-02-25,Jaqueta,Cliente 032,1,249.9
+2026-03-03,Tênis,Cliente 025,2,439.8
+2026-09-26,Boné,Cliente 080,2,79.8
+2026-08-13,Camiseta,Cliente 057,2,99.8
+2026-07-04,Tênis,Cliente 035,4,879.6
+2026-07-15,Meia,Cliente 015,3,44.7
+2026-10-01,Meia,Cliente 001,1,14.9
+2026-04-02,Jaqueta,Cliente 029,1,249.9
+2026-04-22,Camiseta,Cliente 057,3,149.7
+2026-05-01,Tênis,Cliente 013,2,439.8
+2026-10-02,Tênis,Cliente 024,1,219.9
+2026-02-04,Meia,Cliente 012,4,59.6
+2026-05-23,Calça jeans,Cliente 058,1,129.9
+2026-03-26,Tênis,Cliente 052,2,439.8
+2026-08-24,Tênis,Cliente 073,4,879.6
+2026-04-30,Tênis,,5,1099.5
+2026-06-03,Boné,Cliente 055,3,119.7
+2026-03-01,Boné,Cliente 019,1,39.9
+2026-07-14,Jaqueta,Cliente 051,5,1249.5
+2026-02-28,Boné,Cliente 045,5,199.5
+2026-05-13,Jaqueta,Cliente 010,5,1249.5
+2026-07-06,Camiseta,Cliente 031,4,199.6
+2026-06-27,Meia,Cliente 009,3,44.7
+2026-08-03,Tênis,Cliente 076,5,1099.5
+2026-02-18,Boné,Cliente 001,1,39.9
+2026-08-30,Tênis,Cliente 068,1,219.9
+2026-07-25,Tênis,Cliente 013,1,219.9
+2026-01-30,Jaqueta,Cliente 077,2,499.8
+2026-08-26,Boné,Cliente 068,2,79.8
+2026-03-18,Meia,Cliente 072,4,59.6
+2026-06-12,Camiseta,Cliente 079,2,99.8
+2026-04-09,Calça jeans,Cliente 052,1,129.9
+2026-04-13,Calça jeans,Cliente 044,2,259.8
+2026-02-13,Jaqueta,Cliente 018,5,1249.5
+2026-07-02,Calça jeans,Cliente 029,5,649.5
+2026-05-05,Boné,Cliente 019,4,159.6
+2026-08-04,Camiseta,Cliente 068,2,99.8
+2026-04-24,Camiseta,Cliente 019,5,249.5
+2026-02-11,Tênis,Cliente 063,2,439.8
+2026-02-12,Boné,Cliente 073,2,79.8
+2026-02-21,Jaqueta,Cliente 033,1,249.9
+2026-09-19,Tênis,Cliente 067,2,439.8
+2026-09-11,Jaqueta,Cliente 022,4,999.6
+2026-08-24,Calça jeans,Cliente 057,1,129.9
+2026-02-15,Tênis,Cliente 025,4,879.6
+2026-05-14,Meia,Cliente 023,3,44.7
+2026-02-16,Jaqueta,Cliente 051,3,749.7
+2026-04-26,Camiseta,Cliente 020,5,249.5
+2026-05-27,Calça jeans,Cliente 063,5,649.5
+2026-06-08,Meia,Cliente 056,1,14.9
+2026-07-14,Calça jeans,Cliente 044,4,519.6
+2026-06-19,Calça jeans,Cliente 031,4,519.6
+2026-03-12,Boné,Cliente 068,1,39.9
+2026-10-12,Camiseta,Cliente 051,4,199.6
+2026-06-05,Jaqueta,Cliente 022,2,499.8
+2026-02-06,Camiseta,Cliente 066,3,149.7
+2026-01-26,Tênis,Cliente 078,1,219.9
+2026-07-26,Tênis,Cliente 047,3,659.7
+2026-01-15,Tênis,Cliente 041,2,439.8
+2026-06-04,Calça jeans,Cliente 035,3,389.7
+2026-09-03,Meia,Cliente 070,3,44.7
+2026-03-20,Calça jeans,Cliente 010,2,259.8
+2026-08-15,Calça jeans,Cliente 042,3,389.7
+2026-05-09,Meia,Cliente 013,1,14.9
+2026-10-02,Camiseta,Cliente 016,3,149.7
+2026-07-29,Boné,Cliente 014,2,79.8
+2026-07-12,Calça jeans,Cliente 024,3,389.7
+2026-05-30,Tênis,Cliente 073,2,439.8
+2026-05-20,Camiseta,Cliente 016,3,149.7
+2026-06-04,Camiseta,Cliente 078,3,149.7
+2026-05-29,Jaqueta,Cliente 039,5,1249.5
+2026-01-23,Jaqueta,Cliente 067,2,499.8
+2026-08-22,Meia,Cliente 039,3,44.7
+2026-02-28,Jaqueta,Cliente 021,5,1249.5
+2026-09-26,Boné,Cliente 073,2,79.8
+2026-05-22,Tênis,Cliente 072,3,659.7
+2026-05-09,Calça jeans,Cliente 019,3,389.7
+2026-05-29,Meia,Cliente 039,5,74.5
+2026-01-17,Camiseta,Cliente 037,4,199.6
+2026-03-24,Calça jeans,Cliente 057,3,389.7
+2026-05-29,Calça jeans,Cliente 047,1,129.9
+2026-04-12,Tênis,Cliente 055,5,1099.5
+2026-03-23,Camiseta,Cliente 054,5,249.5
+2026-02-14,Camiseta,Cliente 024,2,99.8
+2026-06-16,Tênis,Cliente 036,3,659.7
+2026-05-29,Calça jeans,Cliente 045,5,649.5
+2026-08-27,Tênis,Cliente 039,2,439.8
+2026-01-23,Calça jeans,Cliente 056,3,389.7
+2026-02-18,Tênis,Cliente 018,5,1099.5
+2026-08-02,Jaqueta,Cliente 072,4,999.6
+2026-09-06,Calça jeans,Cliente 028,3,389.7
+2026-05-15,Jaqueta,Cliente 067,2,499.8
+2026-08-27,Tênis,Cliente 034,4,879.6
+2026-05-07,Jaqueta,Cliente 077,2,499.8
+2026-02-23,Tênis,Cliente 075,2,439.8
+2026-06-09,Calça jeans,Cliente 065,1,129.9
+2026-08-11,Camiseta,Cliente 045,5,249.5
+2026-05-16,Meia,Cliente 011,2,29.8
+2026-09-15,Boné,Cliente 042,3,119.7
+2026-04-23,Tênis,Cliente 004,5,1099.5
+2026-04-27,Jaqueta,Cliente 034,1,249.9
+2026-08-02,Camiseta,Cliente 078,5,249.5
+2026-09-04,Meia,Cliente 009,1,14.9
+2026-07-25,Jaqueta,Cliente 005,5,1249.5
+2026-09-11,Calça jeans,Cliente 071,4,519.6
+2026-01-14,Calça jeans,Cliente 024,1,129.9
+2026-06-24,Boné,Cliente 024,4,159.6
+2026-04-19,Jaqueta,Cliente 064,3,749.7
+2026-03-23,Tênis,Cliente 055,1,219.9
+2026-07-11,Camiseta,Cliente 066,5,249.5
+2026-07-18,Boné,Cliente 072,5,199.5
+2026-10-05,Jaqueta,Cliente 006,3,749.7
+2026-06-28,Boné,Cliente 059,4,159.6
+2026-08-31,Boné,Cliente 021,1,39.9
+2026-09-05,Tênis,Cliente 063,1,219.9
+2026-03-05,Jaqueta,Cliente 039,3,749.7
+2026-07-01,Camiseta,Cliente 055,4,199.6
+2026-05-28,Meia,Cliente 016,3,44.7
+2026-07-31,Calça jeans,Cliente 004,2,259.8
+2026-09-07,Jaqueta,Cliente 006,4,999.6
+2026-05-25,Jaqueta,Cliente 049,3,749.7
+2026-02-07,Boné,Cliente 002,3,119.7
+2026-05-05,Meia,Cliente 078,4,59.6
+2026-02-20,Jaqueta,Cliente 027,1,249.9
+2026-05-27,Meia,Cliente 069,4,59.6
+2026-02-04,Calça jeans,Cliente 061,4,519.6
+2026-09-08,Meia,Cliente 024,5,74.5
+2026-07-24,Tênis,Cliente 069,5,1099.5
+2026-06-14,Tênis,Cliente 066,2,439.8
+2026-01-27,Jaqueta,Cliente 075,2,499.8
+2026-08-01,Jaqueta,Cliente 035,4,999.6
+2026-03-20,Meia,Cliente 056,4,59.6
+2026-04-03,Boné,Cliente 004,3,
+2026-01-20,Meia,Cliente 012,3,44.7
+2026-05-20,Camiseta,Cliente 058,2,99.8
+2026-06-26,Meia,Cliente 017,5,74.5
+2026-09-28,Calça jeans,Cliente 078,3,389.7
+2026-05-23,Tênis,Cliente 054,4,879.6
+2026-08-11,Calça jeans,Cliente 013,1,129.9
+2026-03-31,Tênis,Cliente 034,1,219.9
+2026-08-21, BONÉ ,Cliente 078,2,79.8
+2026-09-26,Jaqueta,Cliente 005,1,249.9
+2026-10-16,Boné,Cliente 013,5,199.5
+2026-04-07,Boné,Cliente 042,5,199.5
+2026-01-15,Meia,Cliente 006,3,44.7
+2026-04-07,Tênis,Cliente 020,3,659.7
+2026-03-13,Calça jeans,Cliente 065,1,129.9
+2026-08-16,Meia,Cliente 022,1,14.9
+2026-01-22,Boné,Cliente 040,2,79.8
+2026-02-08,Boné,Cliente 012,4,159.6
+2026-03-23,Camiseta,Cliente 054,5,249.5
+2026-08-01,Camiseta,Cliente 044,3,149.7
+2026-07-25,Jaqueta,Cliente 065,5,1249.5
+2026-03-20,Camiseta,Cliente 049,3,149.7
+2026-01-05,Meia,Cliente 029,2,29.8
+2026-08-05,Boné,,2,79.8
+2026-06-03,Boné,Cliente 061,5,199.5
+2026-06-03,Boné,Cliente 061,5,199.5
+2026-09-08,Jaqueta,Cliente 037,2,499.8
+2026-02-01,Jaqueta,Cliente 041,5,1249.5
+2026-03-27,Camiseta,Cliente 069,1,49.9
+2026-04-16,Meia,Cliente 035,2,29.8
+2026-08-07,Jaqueta,Cliente 072,2,499.8
+2026-07-23,Jaqueta,Cliente 026,4,999.6
+2026-08-19,Boné,Cliente 052,4,159.6
+2026-08-31,Tênis,Cliente 047,5,1099.5
+2026-06-15,Jaqueta,Cliente 041,4,999.6
+2026-10-13,Jaqueta,Cliente 004,5,1249.5
+2026-07-12,Tênis,Cliente 013,5,1099.5
+2026-06-23,Tênis,Cliente 045,3,659.7
+2026-03-28,Meia,Cliente 018,3,44.7
+2026-09-07,Calça jeans,Cliente 043,5,649.5
+2026-06-25,Tênis,Cliente 059,3,659.7
+2026-09-16,Meia,Cliente 023,1,14.9
+2026-05-27,Tênis,,4,879.6
+2026-05-18,Meia,Cliente 048,4,59.6
+2026-03-22,Tênis,Cliente 010,5,1099.5
+2026-02-28,Meia,Cliente 045,1,14.9
+2026-02-26,Jaqueta,Cliente 037,4,999.6
+2026-09-29,Jaqueta,Cliente 066,1,249.9
+2026-02-16,Tênis,Cliente 001,1,219.9
+2026-07-23,Jaqueta,Cliente 042,5,1249.5
+2026-06-08,Camiseta,Cliente 066,3,149.7
+2026-08-29,Boné,Cliente 038,5,199.5
+2026-02-09,Calça jeans,Cliente 031,3,389.7
+2026-09-30,Camiseta,Cliente 071,1,49.9
+2026-08-20,Tênis,Cliente 005,4,879.6
+2026-07-23,Meia,Cliente 031,2,29.8
+2026-08-19,Camiseta,Cliente 060,2,99.8
+2026-01-12,Meia,Cliente 044,1,14.9
+2026-07-03,Camiseta,Cliente 065,1,49.9
+2026-05-03,Calça jeans,Cliente 040,5,649.5
+2026-05-19,Calça jeans,Cliente 079,5,649.5
+2026-03-03,Calça jeans,Cliente 049,5,649.5
+2026-05-24,Camiseta,Cliente 050,1,49.9
+2026-07-08,Meia,Cliente 067,4,59.6
+2026-04-11,Jaqueta,Cliente 025,5,1249.5
+2026-01-16,Boné,Cliente 012,1,39.9
+2026-07-14,Meia,Cliente 041,5,74.5
+2026-01-10,Camiseta,Cliente 033,1,49.9
+2026-05-02,Calça jeans,Cliente 054,5,649.5
+2026-07-27,Boné,Cliente 039,2,79.8
+2026-07-03,Boné,Cliente 040,5,199.5
+2026-05-21,Camiseta,Cliente 027,4,199.6
+2026-02-10,Jaqueta,Cliente 033,3,749.7
+2026-08-04,Boné,Cliente 047,5,199.5
+2026-05-16,Camiseta,Cliente 044,4,199.6
+2026-07-18,Tênis,Cliente 053,3,659.7
+2026-03-13,Boné,Cliente 016,1,39.9
+2026-09-10,Tênis,Cliente 026,5,1099.5
+2026-05-09,Meia,Cliente 004,3,44.7
+2026-07-18,Boné,Cliente 048,1,39.9
+2026-09-18,Tênis,Cliente 069,5,1099.5
+2026-01-14,Calça jeans,Cliente 047,4,519.6
+2026-01-06,Meia,Cliente 021,2,29.8
+2026-10-08,Calça jeans,Cliente 078,2,259.8
+2026-07-25,Boné,Cliente 011,4,159.6
+2026-10-11,Camiseta,Cliente 038,1,49.9
+2026-06-10,Meia,Cliente 055,1,14.9
+2026-03-02,Meia,Cliente 017,5,74.5
+2026-09-11,Boné,Cliente 005,2,79.8
+2026-03-02,Boné,Cliente 064,3,119.7
+2026-01-24,Calça jeans,Cliente 030,1,129.9
+2026-05-23,Jaqueta,Cliente 024,4,999.6
+2026-10-03,Calça jeans,Cliente 023,4,519.6
+2026-05-14,Camiseta,,3,149.7
+2026-04-05,Jaqueta,Cliente 067,2,499.8
+2026-06-21,Jaqueta,Cliente 012,5,1249.5
+2026-04-20,Meia,Cliente 009,2,29.8
+2026-05-03,Jaqueta,Cliente 032,5,1249.5
+2026-10-11,Camiseta,Cliente 012,3,149.7
+2026-02-22,Meia,Cliente 046,2,29.8
+2026-08-06,Tênis,Cliente 011,1,219.9
+2026-03-15,Calça jeans,Cliente 041,3,389.7
+2026-04-06,Boné,Cliente 064,3,119.7
+2026-03-03,Calça jeans,Cliente 049,5,649.5
+2026-01-12,Tênis,Cliente 051,3,659.7
+2026-09-03,Tênis,Cliente 026,5,1099.5
+2026-07-09,Calça jeans,Cliente 048,4,519.6
+2026-01-02,Calça jeans,Cliente 036,5,649.5
+2026-09-28,Jaqueta,Cliente 033,4,999.6
+2026-04-03,Jaqueta,Cliente 022,4,999.6
+2026-02-18,Jaqueta,Cliente 056,5,1249.5
+2026-06-08,Camiseta,Cliente 024,3,149.7
+2026-06-14,Calça jeans,Cliente 060,4,519.6
+2026-09-13, JAQUETA ,Cliente 071,2,499.8
+2026-08-24,Meia,Cliente 022,4,59.6
+2026-03-08,Jaqueta,Cliente 044,2,499.8
+2026-01-17,Boné,Cliente 078,5,199.5
+2026-08-21,Tênis,Cliente 042,2,439.8
+2026-06-26,Boné,Cliente 049,1,39.9
+2026-09-30,Jaqueta,Cliente 036,3,749.7
+2026-10-04,Calça jeans,Cliente 033,2,259.8
+2026-09-08,Camiseta,Cliente 012,2,99.8
+2026-01-14,Tênis,Cliente 040,1,219.9
+2026-07-09,Boné,Cliente 049,2,79.8
+2026-04-16,Camiseta,Cliente 022,1,49.9
+2026-08-26,Calça jeans,Cliente 073,4,519.6
+2026-08-25,Calça jeans,Cliente 033,2,259.8
+2026-08-18,Boné,Cliente 076,2,79.8
+2026-09-16,Calça jeans,Cliente 078,2,259.8
+2026-10-04,Boné,Cliente 037,3,119.7
+2026-07-08,Boné,Cliente 074,2,79.8
+2026-02-07,Boné,Cliente 038,5,199.5
+2026-08-15,Boné,Cliente 039,4,159.6
+2026-06-05,Jaqueta,Cliente 037,1,249.9
+2026-09-03,Camiseta,Cliente 075,4,199.6
+2026-03-13,Calça jeans,Cliente 014,2,259.8
+2026-10-01,Meia,Cliente 012,3,44.7
+2026-04-03,Meia,Cliente 079,4,59.6
+2026-05-27,Meia,Cliente 030,4,59.6
+2026-01-08,Meia,Cliente 012,5,74.5
+2026-02-22,Tênis,Cliente 011,3,659.7
+2026-09-12,Camiseta,Cliente 026,1,49.9
+2026-02-16,Camiseta,Cliente 028,4,199.6
+2026-08-21,Jaqueta,Cliente 012,1,249.9
+2026-06-29,Calça jeans,Cliente 079,5,649.5
+2026-03-21,Jaqueta,Cliente 031,4,999.6
+2026-03-01,Jaqueta,Cliente 046,3,749.7
+2026-03-01,Camiseta,Cliente 059,4,199.6
+2026-01-14,Calça jeans,Cliente 017,1,129.9
+2026-03-03,Boné,Cliente 012,3,119.7
+2026-08-10,Camiseta,Cliente 013,1,49.9
+2026-03-08,Tênis,Cliente 077,4,879.6
+2026-05-23,Boné,Cliente 048,5,199.5
+2026-09-17,Meia,Cliente 050,1,14.9
+2026-02-25,Tênis,Cliente 049,2,439.8
+2026-09-26,Meia,Cliente 077,5,74.5
+2026-09-20,Tênis,Cliente 007,4,879.6
+2026-01-19,Calça jeans,Cliente 071,2,259.8
+2026-06-01,Meia,Cliente 048,1,14.9
+2026-07-24,Tênis,Cliente 054,4,879.6
+2026-03-31,Meia,Cliente 049,5,74.5
+2026-04-20,Tênis,Cliente 043,2,439.8
+2026-08-07,Jaqueta,Cliente 071,5,1249.5
+2026-08-24,Tênis,Cliente 069,2,439.8
+2026-08-07,Tênis,Cliente 060,5,1099.5
+2026-05-06,Jaqueta,Cliente 006,1,249.9
+2026-05-08,Camiseta,Cliente 016,5,249.5
+2026-06-12,Camiseta,Cliente 017,3,149.7
+2026-07-30,Tênis,Cliente 046,1,219.9
+2026-10-08,Tênis,Cliente 067,3,659.7
+2026-01-29,Boné,Cliente 016,5,199.5
+2026-06-16, JAQUETA ,Cliente 050,5,1249.5
+2026-05-19,Tênis,Cliente 040,4,879.6
+2026-10-04,Tênis,Cliente 011,3,659.7
+2026-09-17,Tênis,Cliente 070,1,219.9
+2026-10-15,Boné,Cliente 042,1,39.9
+2026-05-22,Jaqueta,Cliente 067,3,749.7
+2026-01-20,Calça jeans,Cliente 039,1,129.9
+2026-09-26,Camiseta,Cliente 020,1,49.9
+2026-01-22,Tênis,Cliente 046,4,879.6
+2026-09-24,Calça jeans,Cliente 057,3,389.7
+2026-07-01,Tênis,Cliente 034,5,1099.5
+2026-01-24,Calça jeans,Cliente 032,1,129.9
+2026-08-29,Tênis,Cliente 003,1,219.9
+2026-02-13,Meia,Cliente 007,3,44.7
+2026-07-18,Jaqueta,Cliente 032,2,499.8
+2026-02-20,Tênis,Cliente 030,4,879.6
+2026-05-17,Camiseta,Cliente 071,2,99.8
+2026-06-07,Camiseta,Cliente 031,3,149.7
+2026-03-02,Meia,Cliente 023,3,44.7
+2026-01-15,Boné,Cliente 017,3,119.7
+2026-01-02,Meia,Cliente 003,2,29.8
+2026-06-06,Boné,Cliente 030,3,119.7
+2026-02-24,Meia,Cliente 055,1,14.9
+2026-08-31,Meia,Cliente 017,1,14.9
+2026-01-30,Jaqueta,Cliente 066,2,499.8
+2026-06-15, TÊNIS ,Cliente 015,3,659.7
+2026-01-10,Calça jeans,Cliente 049,5,649.5
+2026-06-04,Boné,Cliente 079,5,199.5
+2026-06-17,Tênis,Cliente 016,3,659.7
+2026-02-07,Jaqueta,Cliente 041,3,749.7
+2026-03-17,Meia,Cliente 016,5,74.5
+2026-07-27,Boné,Cliente 054,5,199.5
+2026-03-11,Tênis,Cliente 021,3,659.7
+2026-08-21,Boné,Cliente 047,3,119.7
+2026-02-16,Jaqueta,Cliente 007,4,999.6
+2026-10-04,Boné,Cliente 026,2,79.8
+2026-04-24,Camiseta,Cliente 017,1,49.9
+2026-07-23,Calça jeans,Cliente 064,1,129.9
+2026-04-19,Jaqueta,Cliente 020,5,1249.5
+2026-02-07,Boné,Cliente 059,5,199.5
+2026-05-31, TÊNIS ,Cliente 046,1,219.9
+2026-09-28,Jaqueta,Cliente 017,4,999.6
+2026-08-02,Tênis,Cliente 024,2,439.8
+2026-04-02,Meia,Cliente 065,2,29.8
+2026-08-22,Camiseta,Cliente 002,5,249.5
+2026-10-15,Jaqueta,Cliente 002,4,999.6
+2026-01-18,Jaqueta,Cliente 017,4,999.6
+2026-01-28,Camiseta,Cliente 071,2,99.8
+2026-09-05,Boné,Cliente 045,5,199.5
+2026-09-23,Jaqueta,Cliente 057,2,499.8
+2026-02-01,Tênis,Cliente 072,3,659.7
+2026-08-03,Boné,Cliente 032,5,199.5
+2026-04-04,Jaqueta,Cliente 017,5,1249.5
+2026-09-05,Calça jeans,Cliente 036,2,259.8
+2026-06-04,Calça jeans,Cliente 054,1,129.9
+2026-01-20,Calça jeans,Cliente 002,3,389.7
+2026-10-10,Meia,Cliente 028,1,14.9
+2026-01-08,Tênis,Cliente 071,5,1099.5
+2026-03-09,Tênis,Cliente 039,4,879.6
+2026-02-01,Jaqueta,Cliente 018,4,999.6
+2026-07-26,Calça jeans,Cliente 019,3,389.7
+2026-02-05,Meia,Cliente 069,4,59.6
+2026-10-08,Camiseta,Cliente 065,1,49.9
+2026-07-10,Tênis,Cliente 022,1,219.9
+2026-07-14,Calça jeans,Cliente 035,4,519.6
+2026-09-16,Jaqueta,Cliente 018,1,249.9
+2026-09-09,Camiseta,Cliente 010,4,199.6
+2026-04-11,Tênis,Cliente 025,5,1099.5
+2026-03-19,Jaqueta,Cliente 020,1,249.9
+2026-07-23,Camiseta,Cliente 028,5,249.5
+2026-07-21,Camiseta,Cliente 074,1,49.9
+2026-02-17,Tênis,Cliente 055,1,219.9
+2026-02-28,Meia,Cliente 060,3,44.7
+2026-04-22,Tênis,Cliente 075,1,219.9
+2026-04-23,Meia,Cliente 063,5,74.5
+2026-04-26,Camiseta,Cliente 020,5,249.5
+2026-09-30,Camiseta,Cliente 071,1,49.9
+2026-01-24,Tênis,Cliente 022,1,219.9
+2026-04-20,Camiseta,Cliente 065,5,249.5
+2026-03-18,Jaqueta,Cliente 012,4,999.6
+2026-03-10,Tênis,Cliente 034,1,219.9
+2026-01-17,Camiseta,Cliente 059,2,99.8
+2026-05-01,Camiseta,Cliente 035,3,149.7
+2026-05-31,Tênis,Cliente 060,3,659.7
+2026-08-31,Camiseta,Cliente 049,3,149.7
+2026-04-09,Camiseta,Cliente 026,2,99.8
+2026-01-02,Meia,Cliente 044,2,29.8
+2026-03-08,Meia,Cliente 072,3,44.7
+2026-02-27,Boné,Cliente 053,4,159.6
+2026-10-11,Tênis,Cliente 068,4,879.6
+2026-03-20,Jaqueta,Cliente 007,4,999.6
+2026-03-15,Camiseta,Cliente 073,2,99.8
+2026-09-29,Calça jeans,Cliente 001,5,649.5
+2026-03-19,Meia,Cliente 045,5,74.5
+2026-02-13,Calça jeans,Cliente 045,1,129.9
+2026-08-13,Camiseta,Cliente 049,3,149.7
+2026-04-24,Jaqueta,Cliente 058,5,1249.5
+2026-05-26,Calça jeans,Cliente 021,3,389.7
+2026-06-29,Meia,Cliente 055,4,59.6
+2026-05-07,Tênis,Cliente 036,2,439.8
+2026-09-09,Jaqueta,Cliente 012,4,999.6
+2026-07-30,Boné,Cliente 065,2,79.8
+2026-05-03,Tênis,Cliente 040,1,219.9
+2026-06-14,Calça jeans,Cliente 078,3,389.7
+2026-05-05,Camiseta,Cliente 074,5,249.5
+2026-06-06,Boné,Cliente 075,2,79.8
+2026-07-21,Boné,Cliente 047,3,119.7
+2026-03-31,Jaqueta,Cliente 061,1,249.9
+2026-06-11,Calça jeans,Cliente 058,2,259.8
+2026-05-10,Calça jeans,Cliente 025,2,259.8
+2026-07-29,Calça jeans,Cliente 038,3,389.7
+2026-10-11,Calça jeans,Cliente 027,1,129.9
+2026-09-14,Jaqueta,Cliente 020,4,999.6
+2026-10-10,Boné,Cliente 061,4,159.6
+2026-03-05,Camiseta,Cliente 058,5,249.5
+2026-02-16, TÊNIS ,Cliente 032,2,439.8
+2026-07-14,Boné,Cliente 016,4,159.6
+2026-04-14,Camiseta,Cliente 019,4,199.6
+2026-07-14,Boné,Cliente 043,3,119.7
+2026-01-23,Tênis,Cliente 026,2,439.8
+2026-05-04, JAQUETA ,Cliente 027,1,249.9
+2026-08-26,Tênis,Cliente 008,2,439.8
+2026-09-16,Camiseta,Cliente 059,2,99.8
+2026-06-28,Tênis,Cliente 072,4,879.6
+2026-04-13,Calça jeans,Cliente 018,1,129.9
+2026-03-10,Calça jeans,Cliente 019,4,519.6
+2026-09-30,Camiseta,Cliente 055,3,149.7
+2026-04-23,Calça jeans,Cliente 003,5,649.5
+2026-04-10,Tênis,Cliente 038,1,219.9
+2026-08-06,Meia,Cliente 014,2,29.8
+2026-01-07,Camiseta,Cliente 032,1,49.9
+2026-04-13,Camiseta,Cliente 076,5,249.5
+2026-09-02,Camiseta,Cliente 015,3,149.7
+2026-05-31,Boné,Cliente 058,3,119.7
+2026-09-03,Meia,Cliente 024,4,59.6
+2026-02-22,Tênis,Cliente 050,2,439.8
+2026-05-26,Boné,Cliente 076,1,39.9
+2026-05-22,Boné,Cliente 017,1,39.9
+2026-09-09,Meia,Cliente 014,2,29.8
+2026-05-21,Boné,Cliente 057,2,79.8
+2026-10-15,Jaqueta,Cliente 042,2,499.8
+2026-01-11,Meia,Cliente 007,5,74.5
+2026-06-12,Calça jeans,Cliente 046,5,649.5
+2026-08-20,Boné,Cliente 016,5,199.5
+2026-07-01,Jaqueta,Cliente 010,5,1249.5
+2026-05-31,Tênis,Cliente 028,3,659.7
+2026-10-11,Calça jeans,Cliente 070,4,519.6
+2026-08-13,Camiseta,Cliente 054,4,199.6
+2026-10-10,Camiseta,Cliente 019,3,149.7
+2026-10-03,Tênis,Cliente 037,2,439.8
+2026-02-21,Jaqueta,Cliente 014,5,1249.5
+2026-09-30,Calça jeans,Cliente 030,4,519.6
+2026-05-03,Camiseta,Cliente 021,1,49.9
+2026-04-23,Boné,Cliente 018,3,119.7
+2026-03-24,Tênis,Cliente 043,1,219.9
+2026-10-06,Camiseta,Cliente 065,5,249.5
+2026-01-03,Jaqueta,Cliente 043,3,749.7
+2026-03-26,Meia,Cliente 079,4,59.6
+2026-08-11,Calça jeans,Cliente 010,5,649.5
+2026-03-11,Boné,Cliente 054,2,79.8
+2026-04-08,Calça jeans,Cliente 069,2,259.8
+2026-02-02,Boné,Cliente 022,2,79.8
+2026-02-10,Camiseta,Cliente 071,4,199.6
+2026-07-08,Camiseta,Cliente 039,3,149.7
+2026-03-09,Boné,Cliente 039,2,79.8
+2026-06-26,Camiseta,Cliente 078,3,149.7
+2026-08-20,Camiseta,Cliente 014,3,149.7
+2026-10-01, CAMISETA ,Cliente 026,1,49.9
+2026-01-10,Jaqueta,Cliente 001,2,499.8
+2026-04-23,Meia,Cliente 042,5,74.5
+2026-10-10,Boné,Cliente 045,5,199.5
+2026-05-02,Boné,Cliente 007,3,119.7
+2026-07-22,Jaqueta,Cliente 064,4,999.6
+2026-02-17,Boné,Cliente 069,3,119.7
+2026-02-05,Meia,Cliente 065,3,44.7
+2026-03-20,Jaqueta,Cliente 048,2,499.8
+2026-07-29,Jaqueta,Cliente 042,3,749.7
+2026-07-11,Camiseta,Cliente 019,2,99.8
+2026-07-07,Camiseta,Cliente 047,2,99.8
+2026-07-15,Calça jeans,Cliente 080,1,129.9
+2026-03-18,Tênis,Cliente 005,4,879.6
+2026-01-05,Jaqueta,Cliente 043,3,749.7
+2026-01-15,Jaqueta,Cliente 024,3,749.7
+2026-02-17,Meia,Cliente 052,1,14.9
+2026-09-02,Meia,Cliente 026,4,59.6
+2026-09-07,Meia,Cliente 020,5,74.5
+2026-01-06,Meia,Cliente 071,3,44.7
+2026-09-18,Meia,Cliente 035,3,44.7
+2026-07-10,Camiseta,Cliente 016,5,249.5
+2026-01-17,Camiseta,Cliente 041,2,99.8
+2026-03-03,Tênis,Cliente 069,4,879.6
+2026-10-08,Calça jeans,Cliente 042,3,389.7
+2026-08-05,Camiseta,Cliente 045,1,49.9
+2026-09-17,Camiseta,Cliente 010,3,149.7
+2026-05-19,Calça jeans,Cliente 072,5,649.5
+2026-02-19,Boné,Cliente 031,1,39.9
+2026-04-13,Camiseta,Cliente 035,1,49.9
+2026-09-02,Boné,Cliente 050,4,159.6
+2026-01-13,Meia,Cliente 059,2,29.8
+2026-04-25,Tênis,Cliente 059,1,219.9
+2026-04-10,Boné,Cliente 050,5,199.5
+2026-09-02,Calça jeans,Cliente 042,2,259.8
+2026-09-05,Boné,Cliente 060,4,159.6
+2026-07-08,Tênis,Cliente 015,5,1099.5
+2026-09-08,Calça jeans,Cliente 072,4,519.6
+2026-07-09,Tênis,Cliente 040,2,439.8
+2026-08-09,Camiseta,Cliente 023,4,199.6
+2026-05-04,Meia,Cliente 019,5,74.5
+2026-10-13,Boné,Cliente 072,4,159.6
+2026-07-04,Boné,Cliente 008,5,199.5
+2026-04-30,Boné,Cliente 070,4,159.6
+2026-07-11,Camiseta,Cliente 044,4,199.6
+2026-01-24,Meia,Cliente 013,1,14.9
+2026-05-28,Camiseta,Cliente 037,2,99.8
+2026-10-14,Jaqueta,Cliente 060,1,249.9
+2026-02-07,Jaqueta,Cliente 048,3,749.7
+2026-04-08,Jaqueta,Cliente 044,5,1249.5
+2026-01-21, CALÇA JEANS ,Cliente 028,3,389.7
+2026-08-31,Boné,Cliente 033,5,199.5
+2026-05-04,Camiseta,Cliente 060,3,149.7
+2026-05-26, BONÉ ,Cliente 058,5,199.5
+2026-09-02,Boné,Cliente 010,2,79.8
+2026-08-19,Camiseta,Cliente 063,3,149.7
+2026-07-20,Jaqueta,Cliente 076,3,749.7
+2026-03-15,Jaqueta,Cliente 026,3,749.7
+2026-07-13,Calça jeans,Cliente 052,5,649.5
+2026-03-27,Meia,Cliente 048,3,44.7
+2026-02-07,Boné,Cliente 011,4,159.6
+2026-08-31,Meia,Cliente 067,3,44.7
+2026-06-30,Jaqueta,Cliente 073,1,249.9
+2026-05-26,Meia,Cliente 033,4,59.6
+2026-02-25,Tênis,Cliente 001,3,659.7
+2026-08-31,Jaqueta,Cliente 020,3,749.7
+2026-08-29,Boné,Cliente 041,1,39.9
+2026-03-06,Camiseta,Cliente 036,5,249.5
+2026-06-14,Camiseta,Cliente 065,4,199.6
+2026-09-21,Calça jeans,Cliente 016,2,259.8
+2026-06-27,Meia,Cliente 009,3,44.7
+2026-06-10, CALÇA JEANS ,Cliente 025,3,389.7
+2026-05-18,Boné,Cliente 012,5,199.5
+2026-04-21,Camiseta,Cliente 059,4,199.6
+2026-01-21,Boné,Cliente 010,5,199.5
+2026-06-16,Camiseta,Cliente 024,4,199.6
+2026-02-23,Calça jeans,Cliente 064,5,649.5
+2026-06-19, CALÇA JEANS ,Cliente 016,1,129.9
+2026-04-08,Camiseta,Cliente 011,5,249.5
+2026-01-20,Camiseta,Cliente 018,1,49.9
+2026-10-11,Calça jeans,Cliente 049,3,389.7
+2026-07-22,Meia,Cliente 004,4,59.6
+2026-04-10,Boné,Cliente 050,2,79.8
+2026-05-20,Tênis,Cliente 068,4,879.6
+2026-07-08,Jaqueta,Cliente 060,5,1249.5
+2026-05-15,Boné,Cliente 075,3,119.7
+2026-10-01, CAMISETA ,Cliente 026,1,49.9
+2026-08-24,Tênis,Cliente 047,2,439.8
+2026-04-20,Calça jeans,Cliente 029,5,649.5
+2026-09-03,Meia,Cliente 028,3,44.7
+2026-10-05,Meia,Cliente 008,1,14.9
+2026-07-25,Boné,Cliente 011,4,159.6
+2026-04-19,Meia,Cliente 053,3,44.7
+2026-02-05,Tênis,Cliente 043,4,879.6
+2026-01-04,Boné,Cliente 046,4,159.6
+2026-04-07,Jaqueta,Cliente 051,5,1249.5
+2026-01-09,Meia,Cliente 016,4,59.6
+2026-09-03,Meia,Cliente 041,2,29.8
+2026-06-02,Jaqueta,Cliente 065,1,249.9
+2026-06-10,Meia,Cliente 055,1,14.9
+2026-02-03,Boné,Cliente 028,3,119.7
+2026-08-01,Calça jeans,Cliente 059,5,649.5
+2026-03-02,Calça jeans,Cliente 004,3,389.7
+2026-06-12,Boné,Cliente 058,3,119.7
+2026-05-16,Jaqueta,Cliente 075,4,999.6
+2026-01-31,Camiseta,Cliente 021,2,99.8
+2026-02-13,Jaqueta,Cliente 032,3,749.7
+2026-04-29,Calça jeans,Cliente 050,2,259.8
+2026-05-27,Tênis,Cliente 008,3,659.7
+2026-07-19,Calça jeans,Cliente 070,5,
+2026-06-04,Jaqueta,Cliente 052,5,1249.5
+2026-09-25,Boné,Cliente 054,1,39.9
+2026-05-27,Camiseta,Cliente 046,2,99.8
+2026-04-26,Calça jeans,Cliente 045,3,389.7
+2026-09-26,Boné,Cliente 044,5,199.5
+2026-02-11,Camiseta,Cliente 006,1,49.9
+2026-03-30,Tênis,Cliente 039,4,879.6
+2026-01-29,Jaqueta,Cliente 066,3,749.7
+2026-03-23,Jaqueta,Cliente 047,5,1249.5
+2026-09-09,Meia,Cliente 074,3,44.7
+2026-09-15,Calça jeans,Cliente 040,4,519.6
+2026-06-19,Tênis,Cliente 011,2,439.8
+2026-09-06,Jaqueta,Cliente 044,2,499.8
+2026-09-20,Tênis,Cliente 064,3,659.7
+2026-07-23,Meia,Cliente 075,5,74.5
+2026-01-22,Calça jeans,Cliente 055,2,259.8
+2026-09-05,Tênis,Cliente 004,5,1099.5
+2026-04-23,Jaqueta,Cliente 074,1,249.9
+2026-04-03,Boné,Cliente 070,5,199.5
+2026-04-23,Jaqueta,Cliente 025,3,749.7
+2026-04-26,Meia,Cliente 045,2,29.8
+2026-07-29,Tênis,Cliente 064,1,219.9
+2026-03-07,Camiseta,Cliente 034,4,
+2026-10-15,Jaqueta,Cliente 042,2,499.8
+2026-04-25,Camiseta,Cliente 017,2,99.8
+2026-03-20,Jaqueta,Cliente 022,2,499.8
+2026-01-01,Jaqueta,Cliente 043,4,999.6
+2026-04-25,Jaqueta,Cliente 072,5,1249.5
+2026-08-04,Calça jeans,Cliente 043,3,389.7
+2026-10-01,Meia,Cliente 080,3,44.7
+2026-07-10,Camiseta,Cliente 071,4,199.6
+2026-03-11,Meia,Cliente 060,4,59.6
+2026-04-26,Camiseta,Cliente 030,5,249.5
+2026-09-11,Camiseta,Cliente 077,3,149.7
+2026-04-29,Camiseta,Cliente 067,1,49.9
+2026-08-19,Tênis,,4,879.6
+2026-08-18,Tênis,Cliente 049,4,879.6
+2026-01-06,Tênis,Cliente 034,5,1099.5
+2026-09-27,Boné,Cliente 059,1,39.9
+2026-02-25,Boné,Cliente 030,3,119.7
+2026-06-02,Tênis,Cliente 029,5,1099.5
+2026-07-31,Jaqueta,Cliente 007,3,749.7
+2026-05-07,Jaqueta,Cliente 010,3,749.7
+2026-01-28,Camiseta,Cliente 075,4,199.6
+2026-09-25,Boné,Cliente 067,3,119.7
+2026-09-04,Calça jeans,Cliente 038,3,389.7
+2026-09-07,Meia,Cliente 041,4,59.6
+2026-08-22,Meia,Cliente 038,2,29.8
+2026-02-08,Boné,Cliente 044,2,79.8
+2026-06-23, TÊNIS ,Cliente 023,5,1099.5
+2026-04-28,Meia,Cliente 009,1,14.9
+2026-07-05,Boné,Cliente 013,2,79.8
+2026-02-07,Boné,Cliente 017,4,159.6
+2026-04-23,Jaqueta,Cliente 018,2,499.8
+2026-10-10,Jaqueta,Cliente 021,2,499.8
+2026-02-16,Boné,Cliente 070,3,119.7
+2026-01-27,Meia,Cliente 035,2,29.8
+2026-10-11,Boné,Cliente 017,3,119.7
+2026-02-15,Camiseta,Cliente 015,1,49.9
+2026-01-13,Meia,Cliente 036,1,14.9
+2026-04-28,Calça jeans,Cliente 049,3,389.7
+2026-01-05,Meia,Cliente 071,5,74.5
+2026-03-03,Meia,Cliente 073,3,44.7
+2026-01-13,Camiseta,Cliente 030,4,199.6
+2026-08-08,Tênis,Cliente 075,5,1099.5
+2026-05-08,Meia,Cliente 019,2,29.8
+2026-04-12,Meia,Cliente 058,5,74.5
+2026-04-16,Meia,Cliente 036,2,29.8
+2026-06-01,Camiseta,Cliente 073,3,149.7
+2026-04-09,Jaqueta,Cliente 032,4,999.6
+2026-01-09,Boné,Cliente 050,3,119.7
+2026-03-27,Tênis,Cliente 012,3,659.7
+2026-07-26,Jaqueta,Cliente 012,5,1249.5
+2026-04-24,Calça jeans,Cliente 053,5,649.5
+2026-07-31,Camiseta,Cliente 043,1,49.9
+2026-01-21,Boné,Cliente 020,2,79.8
+2026-02-17,Tênis,Cliente 049,1,219.9
+2026-02-22,Meia,Cliente 052,1,14.9
+2026-03-30,Boné,Cliente 023,3,119.7
+2026-02-15,Calça jeans,Cliente 014,4,519.6
+2026-05-05,Boné,Cliente 005,2,79.8
+2026-05-01,Meia,Cliente 008,3,44.7
+2026-06-18, MEIA ,Cliente 046,2,29.8
+2026-05-27,Camiseta,Cliente 010,3,149.7
+2026-01-02,Jaqueta,Cliente 037,3,749.7
+2026-01-11,Jaqueta,Cliente 050,5,1249.5
+2026-10-16,Meia,Cliente 028,1,14.9
+2026-01-31,Boné,Cliente 021,1,39.9
+2026-10-05,Meia,Cliente 005,4,59.6
+2026-01-04,Jaqueta,Cliente 010,2,499.8
+2026-02-05, TÊNIS ,Cliente 036,3,659.7
+2026-01-31,Camiseta,Cliente 021,2,99.8
+2026-03-11,Calça jeans,Cliente 010,1,129.9
+2026-06-22,Meia,Cliente 073,5,74.5
+2026-07-28,Calça jeans,Cliente 063,2,259.8
+2026-07-06,Camiseta,Cliente 066,4,199.6
+2026-09-22,Jaqueta,Cliente 074,5,1249.5
+2026-08-09,Boné,Cliente 077,3,119.7
+2026-05-13,Tênis,Cliente 012,2,439.8
+2026-02-22,Meia,Cliente 069,1,14.9
+2026-04-02,Calça jeans,Cliente 039,3,389.7
+2026-04-04,Tênis,Cliente 015,3,659.7
+2026-10-11,Tênis,Cliente 068,4,879.6
+2026-09-19,Boné,Cliente 037,2,79.8
+2026-08-12,Calça jeans,Cliente 063,3,389.7
+2026-09-09,Calça jeans,Cliente 058,4,519.6
+2026-01-26,Tênis,Cliente 065,3,659.7
+2026-01-06,Boné,Cliente 013,1,39.9
+2026-08-13,Calça jeans,Cliente 063,3,389.7
+2026-06-19,Boné,Cliente 070,4,159.6
+2026-03-12,Meia,Cliente 014,3,44.7
+2026-04-30,Jaqueta,Cliente 053,4,999.6
+2026-03-18,Camiseta,Cliente 070,1,49.9
+2026-07-12,Jaqueta,Cliente 020,2,499.8
+2026-03-05,Jaqueta,Cliente 006,2,499.8
+2026-07-22,Boné,Cliente 065,1,39.9
+2026-04-26,Boné,Cliente 015,1,39.9
+2026-04-02,Jaqueta,Cliente 041,1,249.9
+2026-06-30, JAQUETA ,Cliente 014,3,749.7
+2026-08-07,Tênis,Cliente 012,1,219.9
+2026-09-16,Calça jeans,Cliente 022,1,129.9
+2026-06-06,Jaqueta,Cliente 073,4,999.6
+2026-08-04,Boné,Cliente 039,3,119.7
+2026-04-08,Boné,Cliente 013,4,159.6
+2026-03-05,Camiseta,Cliente 037,5,249.5
+2026-08-03,Tênis,Cliente 069,4,879.6
+2026-09-21,Boné,Cliente 018,2,79.8
+2026-07-01,Boné,Cliente 034,2,79.8
+2026-09-17,Meia,Cliente 039,3,44.7
+2026-01-27,Tênis,Cliente 079,5,1099.5
+2026-10-08,Calça jeans,Cliente 064,1,129.9
+2026-10-08,Calça jeans,Cliente 012,1,129.9
+2026-06-02,Tênis,Cliente 031,3,659.7
+2026-05-04,Boné,Cliente 064,1,39.9
+2026-03-01,Tênis,Cliente 034,1,219.9
+2026-08-04,Boné,Cliente 022,4,159.6
+2026-02-22,Camiseta,Cliente 044,4,199.6
+2026-05-08,Meia,Cliente 071,1,14.9
+2026-07-24,Tênis,Cliente 057,4,879.6
+2026-02-28, CALÇA JEANS ,Cliente 045,5,649.5
+2026-06-05,Camiseta,Cliente 001,2,99.8
+2026-01-01,Tênis,Cliente 079,4,879.6
+2026-01-07,Meia,Cliente 054,3,44.7
+2026-08-08,Boné,Cliente 036,1,39.9
