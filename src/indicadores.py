@@ -36,3 +36,11 @@ def vendas_por_mes(df):
     serie = df.groupby(df["data"].dt.to_period("M"))["valor"].sum().round(2)
     serie.index = serie.index.astype(str)
     return serie
+
+def vendas_por_produto(df):
+    return (
+        df.groupby("produto")["valor"]
+        .sum()
+        .round(2)
+        .sort_values(ascending=False)
+    )
