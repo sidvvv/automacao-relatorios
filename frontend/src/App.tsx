@@ -23,6 +23,10 @@ import {
   Tooltip,
 } from 'recharts'
 
+import GraficoRoscaProdutos, {
+  CORES_PRODUTOS,
+} from './components/GraficoRoscaProdutos'
+
 const indicadores = [
   {
     titulo: 'Faturamento',
@@ -107,9 +111,37 @@ type RespostaAPI = {
 function App() {
   
 const [arquivo, setArquivo] = useState<File | null>(null)
+const [arrastando, setArrastando] = useState(false)
 const [resultado, setResultado] = useState<RespostaAPI | null>(null)
 const [carregando, setCarregando] = useState(false)
 const [erro, setErro] = useState('')
+
+
+function selecionarArquivo(novoArquivo: File | null) {
+  setResultado(null)
+  setErro('')
+
+  if (!novoArquivo) {
+    setArquivo(null)
+    return
+  }
+
+  const nome = novoArquivo.name.toLowerCase()
+
+  if (!nome.endsWith('.csv') && !nome.endsWith('.xlsx')) {
+    setErro('Selecione um arquivo CSV ou Excel (.xlsx).')
+    setArquivo(null)
+    return
+  }
+
+  if (novoArquivo.size > 10 * 1024 * 1024) {
+    setErro('O arquivo deve ter no máximo 10 MB.')
+    setArquivo(null)
+    return
+  }
+
+  setArquivo(novoArquivo)
+}
 
 async function enviarArquivo() {
   if (!arquivo) return
@@ -308,26 +340,91 @@ const resumoExibido = resultado
     Envie os dados de vendas para processamento automático.
   </p>
 
-  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+
+<div className="mt-5 space-y-4">
+  <div
+    onDragOver={(e) => {
+      e.preventDefault()
+      setArrastando(true)
+    }}
+    onDragLeave={(e) => {
+      e.preventDefault()
+      setArrastando(false)
+    }}
+    onDrop={(e) => {
+      e.preventDefault()
+      setArrastando(false)
+
+      if (!carregando) {
+        selecionarArquivo(e.dataTransfer.files[0] ?? null)
+      }
+    }}
+    className={`rounded-2xl border-2 border-dashed p-8
+      text-center transition-all duration-200 ${
+        arrastando
+          ? 'border-blue-500 bg-blue-100'
+          : 'border-slate-300 bg-slate-50 hover:border-blue-400'
+      }`}
+  >
     <input
+      id="arquivo-vendas"
       type="file"
       accept=".csv,.xlsx"
+      className="sr-only"
+      disabled={carregando}
       onChange={(e) => {
-        setArquivo(e.target.files?.[0] ?? null)
-        setResultado(null)
-        setErro('')
+        selecionarArquivo(e.target.files?.[0] ?? null)
+        e.target.value = ''
       }}
-      className="min-w-0 flex-1 rounded-xl border border-slate-200 p-3 text-sm"
     />
 
-    <button
-      type="button"
-      onClick={enviarArquivo}
-      disabled={!arquivo || carregando}
-      className="rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+    <label
+      htmlFor="arquivo-vendas"
+      className="flex cursor-pointer flex-col items-center gap-2"
     >
-      {carregando ? 'Processando...' : 'Processar planilha'}
-    </button>
+      <FileUp size={36} className="text-blue-600" />
+
+      <span className="font-semibold text-slate-800">
+        {arrastando
+          ? 'Solte o arquivo aqui'
+          : 'Arraste sua planilha aqui'}
+      </span>
+
+      <span className="text-sm text-slate-500">
+        ou clique para selecionar
+      </span>
+
+      <span className="text-xs text-slate-400">
+        CSV ou Excel (.xlsx) — máximo 10 MB
+      </span>
+    </label>
+  </div>
+
+  {arquivo && (
+    <div className="flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50 p-4">
+      <div className="flex min-w-0 items-center gap-3">
+        <FileUp size={20} className="shrink-0 text-blue-600" />
+
+        <span className="truncate text-sm font-medium">
+          {arquivo.name}
+        </span>
+      </div>
+
+      <span className="ml-3 shrink-0 text-xs text-blue-600">
+        Pronto para processar
+      </span>
+    </div>
+  )}
+
+  <button
+    type="button"
+    onClick={enviarArquivo}
+    disabled={!arquivo || carregando}
+    className="w-full rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+  >
+    {carregando ? 'Processando...' : 'Processar planilha'}
+  </button>
+
   </div>
 
   {erro && (
@@ -336,32 +433,31 @@ const resumoExibido = resultado
     </p>
   )}
 
-  {resultado && (
-    <div className="mt-5 rounded-xl bg-emerald-50 p-4">
-      <p className="font-medium text-emerald-800">
+
+{resultado && (
+  <div
+    role="status"
+    className="mt-4 flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3"
+  >
+    <CheckCircle2
+      size={22}
+      className="shrink-0 text-emerald-600"
+    />
+
+    <div className="min-w-0 flex-1">
+      <p className="text-sm font-semibold text-emerald-800">
         Planilha processada com sucesso!
       </p>
 
-      <p className="mt-2 text-sm text-emerald-900">
-        Arquivo: {resultado.arquivo}
-      </p>
-
-      <p className="text-sm text-emerald-900">
-        Faturamento: {resultado.indicadores.faturamento.toLocaleString(
-          'pt-BR',
-          { style: 'currency', currency: 'BRL' }
-        )}
-      </p>
-
-      <p className="text-sm text-emerald-900">
-        Vendas: {resultado.indicadores.vendas}
-      </p>
-
-      <p className="text-sm text-emerald-900">
-        Clientes únicos: {resultado.indicadores.clientes_unicos}
+      <p className="mt-1 truncate text-xs text-emerald-700">
+        {resultado.arquivo} ·{' '}
+        {resultado.indicadores.vendas.toLocaleString('pt-BR')}{' '}
+        vendas processadas
       </p>
     </div>
-  )}
+  </div>
+)}
+
 </section>
 
 
@@ -487,34 +583,71 @@ const resumoExibido = resultado
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="font-semibold">Participação por produto</h3>
-                <p className="mt-1 text-sm text-slate-500">
-                  Distribuição do faturamento
-                </p>
 
-                <div className="mt-7 space-y-4">
-                  {produtosExibidos.map((produto) => (
-                    <div key={produto.nome}>
-                      <div className="mb-1.5 flex justify-between text-sm">
-                        <span>{produto.nome}</span>
-                        <span className="text-slate-500">
-                          {produto.percentual.toFixed(2)}%
-                        </span>
-                      </div>
+<div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+  <h3 className="font-semibold">
+    Participação por produto
+  </h3>
 
-                      <div className="h-2.5 overflow-hidden rounded-full bg-slate-100">
-                        <div
-                          className="h-full rounded-full bg-blue-600"
-                          style={{
-                            width: `${produto.percentual}%`,
-                          }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+  <p className="mt-1 text-sm text-slate-500">
+    Distribuição do faturamento
+  </p>
+
+  <div className="mt-6 flex flex-col items-center gap-5 lg:flex-row">
+
+    {/* Gráfico de rosca */}
+    <div className="h-56 w-full shrink-0 lg:w-52">
+      <GraficoRoscaProdutos
+        produtos={produtosExibidos}
+      />
+    </div>
+
+    {/* Ranking de produtos */}
+    <div className="w-full min-w-0 flex-1 space-y-3">
+      {produtosExibidos.map((produto, index) => (
+        <div key={produto.nome}>
+          <div className="mb-1.5 flex items-center justify-between gap-2 text-sm">
+            <span className="flex min-w-0 items-center gap-2">
+              <span
+                className="h-2.5 w-2.5 shrink-0 rounded-full"
+                style={{
+                  backgroundColor:
+                    CORES_PRODUTOS[
+                      index % CORES_PRODUTOS.length
+                    ],
+                }}
+              />
+              <span className="truncate">
+                {produto.nome}
+              </span>
+            </span>
+
+            <span className="shrink-0 text-slate-500">
+              {produto.percentual.toFixed(2)}%
+            </span>
+          </div>
+
+          <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+            <div
+              className="h-full rounded-full transition-all duration-500"
+              style={{
+                width: `${Math.max(
+                  0,
+                  Math.min(100, produto.percentual)
+                )}%`,
+                backgroundColor:
+                  CORES_PRODUTOS[
+                    index % CORES_PRODUTOS.length
+                  ],
+              }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 
             </section>
 
