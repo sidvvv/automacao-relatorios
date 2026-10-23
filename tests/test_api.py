@@ -93,3 +93,70 @@ def test_colunas_ausentes():
     )
 
     assert resposta.status_code == 422
+
+
+def test_filtro_jaqueta_julho():
+    with ARQUIVO_CSV.open("rb") as arquivo:
+        resposta = client.post(
+            "/api/relatorios/processar",
+            params={
+                "data_inicio": "2026-07-01",
+                "data_fim": "2026-07-31",
+                "produto": "Jaqueta",
+            },
+            files={
+                "arquivo": ("vendas.csv", arquivo, "text/csv")
+            },
+        )
+
+    assert resposta.status_code == 200, resposta.text
+
+    dados = resposta.json()
+
+    assert dados["indicadores"]["faturamento"] == pytest.approx(18492.60)
+    assert dados["indicadores"]["vendas"] == 24
+
+    assert len(dados["faturamento_mensal"]) == 1
+    assert dados["faturamento_mensal"][0]["mes"] == "2026-07"
+
+    assert len(dados["ranking_produtos"]) == 1
+    assert dados["ranking_produtos"][0]["produto"] == "Jaqueta"
+    assert dados["ranking_produtos"][0]["participacao"] == 100.0
+
+
+def test_intervalo_invalido():
+    with ARQUIVO_CSV.open("rb") as arquivo:
+        resposta = client.post(
+            "/api/relatorios/processar",
+            params={
+                "data_inicio": "2026-08-01",
+                "data_fim": "2026-07-01",
+            },
+            files={
+                "arquivo": ("vendas.csv", arquivo, "text/csv")
+            },
+        )
+
+    assert resposta.status_code == 422
+    assert "data inicial" in resposta.json()["detail"].lower()
+
+
+def test_filtros_disponiveis():
+    with ARQUIVO_CSV.open("rb") as arquivo:
+        resposta = client.post(
+            "/api/relatorios/processar",
+            files={
+                "arquivo": ("vendas.csv", arquivo, "text/csv")
+            },
+        )
+
+    assert resposta.status_code == 200, resposta.text
+
+    dados = resposta.json()
+
+    assert "Jaqueta" in dados["filtros_disponiveis"]["produtos"]
+    assert "Tênis" in dados["filtros_disponiveis"]["produtos"]
+
+    assert dados["filtros_aplicados"]["produto"] is None
+    assert dados["filtros_aplicados"]["data_inicio"] is None
+    assert dados["filtros_aplicados"]["data_fim"] is None

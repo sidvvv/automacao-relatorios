@@ -9,7 +9,8 @@ from zipfile import BadZipFile
 import logging
 
 import pandas as pd
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from datetime import date
+from fastapi import FastAPI, File, UploadFile, HTTPException, Query
 
 from src.limpeza import limpar
 from src.qualidade import diagnosticar
@@ -41,7 +42,12 @@ def verificar_saude():
 
 
 @app.post("/api/relatorios/processar")
-async def processar_relatorio(arquivo: UploadFile = File(...)):
+async def processar_relatorio(
+    arquivo: UploadFile = File(...),
+    data_inicio: date | None = Query(default=None),
+    data_fim: date | None = Query(default=None),
+    produto: str | None = Query(default=None),
+):
     nome = arquivo.filename or ""
     extensao = Path(nome).suffix.lower()
 
@@ -94,6 +100,58 @@ async def processar_relatorio(arquivo: UploadFile = File(...)):
                 detail="Nenhuma venda válida após a limpeza."
             )
 
+                    
+        # ==========================================
+        # FILTROS INTERATIVOS
+        # ==========================================
+
+        # Guardar as opções disponíveis antes de filtrar
+        produtos_disponiveis = sorted(
+            limpo["produto"].dropna().astype(str).unique().tolist()
+        )
+
+        periodo_disponivel = {
+            "inicio": limpo["data"].min().date().isoformat(),
+            "fim": limpo["data"].max().date().isoformat()
+        }
+
+        # Validar intervalo de datas
+        if data_inicio and data_fim and data_inicio > data_fim:
+            raise HTTPException(
+                status_code=422,
+                detail="A data inicial não pode ser maior que a data final."
+            )
+
+        # Aplicar data inicial
+        if data_inicio:
+            limpo = limpo[
+                limpo["data"].dt.date >= data_inicio
+            ].copy()
+
+        # Aplicar data final
+        if data_fim:
+            limpo = limpo[
+                limpo["data"].dt.date <= data_fim
+            ].copy()
+
+        # Aplicar filtro de produto
+        if produto and produto.strip():
+            limpo = limpo[
+                limpo["produto"]
+                .astype("string")
+                .str.strip()
+                .str.casefold()
+                == produto.strip().casefold()
+            ].copy()
+
+        # Verificar se restaram vendas
+        if limpo.empty:
+            raise HTTPException(
+                status_code=422,
+                detail="Nenhuma venda encontrada para os filtros selecionados."
+            )
+
+
         # 4. Calcular indicadores
         faturamento = float(limpo["valor"].sum())
         vendas = int(len(limpo))
@@ -107,6 +165,22 @@ async def processar_relatorio(arquivo: UploadFile = File(...)):
         # 6. Retornar JSON para o dashboard
         return {
             "arquivo": nome,
+            
+            "filtros_disponiveis": {
+                "produtos": produtos_disponiveis,
+                "periodo": periodo_disponivel,
+            },
+
+            "filtros_aplicados": {
+                "data_inicio": (
+                    data_inicio.isoformat() if data_inicio else None
+                ),
+                "data_fim": (
+                    data_fim.isoformat() if data_fim else None
+                ),
+                "produto": produto.strip() if produto else None,
+            },
+
             "periodo": {
                 "inicio": limpo["data"].min().date().isoformat(),
                 "fim": limpo["data"].max().date().isoformat()

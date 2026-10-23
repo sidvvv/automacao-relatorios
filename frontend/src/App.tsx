@@ -75,6 +75,21 @@ const meses = [
 
 
 type RespostaAPI = {
+  
+filtros_disponiveis: {
+  produtos: string[]
+  periodo: {
+    inicio: string
+    fim: string
+  }
+}
+
+filtros_aplicados: {
+  data_inicio: string | null
+  data_fim: string | null
+  produto: string | null
+}
+
   arquivo: string
 
   periodo: {
@@ -111,6 +126,15 @@ type RespostaAPI = {
 function App() {
   
 const [arquivo, setArquivo] = useState<File | null>(null)
+
+const [dataInicio, setDataInicio] = useState('')
+const [dataFim, setDataFim] = useState('')
+const [produtoFiltro, setProdutoFiltro] = useState('')
+
+const [opcoesFiltros, setOpcoesFiltros] = useState<
+  RespostaAPI['filtros_disponiveis'] | null
+>(null)
+
 const [arrastando, setArrastando] = useState(false)
 const [resultado, setResultado] = useState<RespostaAPI | null>(null)
 const [carregando, setCarregando] = useState(false)
@@ -120,6 +144,10 @@ const [erro, setErro] = useState('')
 function selecionarArquivo(novoArquivo: File | null) {
   setResultado(null)
   setErro('')
+  setOpcoesFiltros(null)
+  setDataInicio('')
+  setDataFim('')
+  setProdutoFiltro('')
 
   if (!novoArquivo) {
     setArquivo(null)
@@ -143,7 +171,13 @@ function selecionarArquivo(novoArquivo: File | null) {
   setArquivo(novoArquivo)
 }
 
-async function enviarArquivo() {
+
+async function enviarArquivo(filtros?: {
+  data_inicio?: string
+  data_fim?: string
+  produto?: string
+}) {
+
   if (!arquivo) return
 
   if (arquivo.size > 10 * 1024 * 1024) {
@@ -159,10 +193,30 @@ async function enviarArquivo() {
   setResultado(null)
 
   try {
-    const resposta = await fetch('/api/relatorios/processar', {
-      method: 'POST',
-      body: formulario,
-    })
+
+const parametros = new URLSearchParams()
+
+if (filtros?.data_inicio) {
+  parametros.set('data_inicio', filtros.data_inicio)
+}
+
+if (filtros?.data_fim) {
+  parametros.set('data_fim', filtros.data_fim)
+}
+
+if (filtros?.produto) {
+  parametros.set('produto', filtros.produto)
+}
+
+const query = parametros.toString()
+
+const resposta = await fetch(
+  `/api/relatorios/processar${query ? `?${query}` : ''}`,
+  {
+    method: 'POST',
+    body: formulario,
+  }
+)
 
     const dados = await resposta.json()
 
@@ -175,6 +229,9 @@ async function enviarArquivo() {
     }
 
     setResultado(dados as RespostaAPI)
+    setOpcoesFiltros(
+  (dados as RespostaAPI).filtros_disponiveis
+)
   } catch (error) {
     setErro(
       error instanceof Error
@@ -418,7 +475,7 @@ const resumoExibido = resultado
 
   <button
     type="button"
-    onClick={enviarArquivo}
+    onClick={() => void enviarArquivo()}
     disabled={!arquivo || carregando}
     className="w-full rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
   >
@@ -460,6 +517,126 @@ const resumoExibido = resultado
 
 </section>
 
+            
+{opcoesFiltros && (
+  <section className="mb-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+
+    <div className="mb-5">
+      <h3 className="text-lg font-semibold">
+        Filtros do relatório
+      </h3>
+      <p className="mt-1 text-sm text-slate-500">
+        Personalize a análise sem reenviar a planilha.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+
+      {/* Data inicial */}
+      <div>
+        <label
+          htmlFor="filtro-inicio"
+          className="mb-2 block text-sm font-medium"
+        >
+          Data inicial
+        </label>
+
+        <input
+          id="filtro-inicio"
+          type="date"
+          value={dataInicio}
+          min={opcoesFiltros.periodo.inicio}
+          max={opcoesFiltros.periodo.fim}
+          onChange={(e) => setDataInicio(e.target.value)}
+          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
+        />
+      </div>
+
+      {/* Data final */}
+      <div>
+        <label
+          htmlFor="filtro-fim"
+          className="mb-2 block text-sm font-medium"
+        >
+          Data final
+        </label>
+
+        <input
+          id="filtro-fim"
+          type="date"
+          value={dataFim}
+          min={opcoesFiltros.periodo.inicio}
+          max={opcoesFiltros.periodo.fim}
+          onChange={(e) => setDataFim(e.target.value)}
+          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
+        />
+      </div>
+
+      {/* Produto */}
+      <div>
+        <label
+          htmlFor="filtro-produto"
+          className="mb-2 block text-sm font-medium"
+        >
+          Produto
+        </label>
+
+        <select
+          id="filtro-produto"
+          value={produtoFiltro}
+          onChange={(e) => setProdutoFiltro(e.target.value)}
+          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
+        >
+          <option value="">Todos os produtos</option>
+
+          {opcoesFiltros.produtos.map((produto) => (
+            <option key={produto} value={produto}>
+              {produto}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+
+    <div className="mt-5 flex flex-wrap gap-3">
+
+      <button
+        type="button"
+        disabled={carregando || !arquivo}
+        onClick={() => {
+          if (dataInicio && dataFim && dataInicio > dataFim) {
+            setErro('A data inicial não pode ser maior que a final.')
+            return
+          }
+
+          void enviarArquivo({
+            data_inicio: dataInicio,
+            data_fim: dataFim,
+            produto: produtoFiltro,
+          })
+        }}
+        className="rounded-xl bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+      >
+        {carregando ? 'Atualizando...' : 'Aplicar filtros'}
+      </button>
+
+      <button
+        type="button"
+        disabled={carregando || !arquivo}
+        onClick={() => {
+          setDataInicio('')
+          setDataFim('')
+          setProdutoFiltro('')
+          void enviarArquivo()
+        }}
+        className="rounded-xl border border-slate-200 px-6 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50"
+      >
+        Limpar filtros
+      </button>
+
+    </div>
+  </section>
+)}
 
             {/* Indicadores */}
             <section className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
