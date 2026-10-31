@@ -74,7 +74,11 @@ const meses = [
 
 
 
+type Periodo = { inicio: string; fim: string }
+
 type RespostaAPI = {
+  sem_resultados: boolean
+  periodo_selecionado: Periodo
   
 filtros_disponiveis: {
   produtos: string[]
@@ -92,10 +96,7 @@ filtros_aplicados: {
 
   arquivo: string
 
-  periodo: {
-    inicio: string
-    fim: string
-  }
+  periodo: Periodo | null
 
   indicadores: {
     faturamento: number
@@ -190,7 +191,6 @@ async function enviarArquivo(filtros?: {
 
   setCarregando(true)
   setErro('')
-  setResultado(null)
 
   try {
 
@@ -244,6 +244,13 @@ const resposta = await fetch(
 }
 
   
+function limparFiltros() {
+  setDataInicio('')
+  setDataFim('')
+  setProdutoFiltro('')
+  void enviarArquivo()
+}
+
 const formatarMoeda = (valor: number) =>
   new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -290,15 +297,8 @@ const mesesExibidos = resultado
         .toLocaleDateString('pt-BR', { month: 'short' })
         .replace('.', '')
 
-      const ultimoDia = new Date(ano, numeroMes, 0).getDate()
-      const fimPeriodo = resultado.periodo.fim
-
-      const parcial =
-        item.mes === fimPeriodo.slice(0, 7) &&
-        Number(fimPeriodo.slice(8, 10)) < ultimoDia
-
       return {
-        nome: `${nomeMes}${parcial ? '*' : ''}`,
+        nome: `${nomeMes}/${ano}`,
         valor: item.faturamento,
       }
     })
@@ -312,8 +312,11 @@ const produtosExibidos = resultado
     }))
   : produtos
 
+const formatarPeriodo = (periodo: Periodo) =>
+  `${formatarData(periodo.inicio)} a ${formatarData(periodo.fim)}`
+
 const periodoExibido = resultado
-  ? `${formatarData(resultado.periodo.inicio)} a ${formatarData(resultado.periodo.fim)}`
+  ? formatarPeriodo(resultado.periodo_selecionado)
   : '01/01/2026 a 16/10/2026'
 
 const resumoExibido = resultado
@@ -368,18 +371,24 @@ const resumoExibido = resultado
           <div className="mx-auto max-w-7xl">
 
 
-        <header className="mb-8">
+        <header className="mb-8 min-w-0 break-words">
           <p className="mb-1 text-sm font-medium text-blue-600">
             Visão geral
           </p>
 
-          <h1 className="text-3xl font-bold tracking-tight">
+          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
             Dashboard de Vendas
           </h1>
 
           <p className="mt-2 text-sm text-slate-500">
-            Período: {periodoExibido}
+            {resultado ? 'Período selecionado' : 'Período'}: {periodoExibido}
           </p>
+
+          {resultado && (
+            <p className="mt-1 text-sm text-slate-500">
+              Período com vendas: {resultado.periodo ? formatarPeriodo(resultado.periodo) : 'Nenhuma venda no período selecionado'}
+            </p>
+          )}
 
           {!resultado && (
             <p className="mt-2 text-xs text-amber-600">
@@ -390,7 +399,7 @@ const resumoExibido = resultado
         </header>
 
             
-<section className="mb-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+<section className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
   <h3 className="text-lg font-semibold">Importar planilha</h3>
 
   <p className="mt-1 text-sm text-slate-500">
@@ -458,7 +467,7 @@ const resumoExibido = resultado
   </div>
 
   {arquivo && (
-    <div className="flex items-center justify-between rounded-xl border border-blue-100 bg-blue-50 p-4">
+    <div className="flex flex-col items-start gap-2 rounded-xl border border-blue-100 sm:flex-row sm:items-center sm:justify-between bg-blue-50 p-4">
       <div className="flex min-w-0 items-center gap-3">
         <FileUp size={20} className="shrink-0 text-blue-600" />
 
@@ -467,7 +476,7 @@ const resumoExibido = resultado
         </span>
       </div>
 
-      <span className="ml-3 shrink-0 text-xs text-blue-600">
+      <span className="shrink-0 text-xs text-blue-600">
         Pronto para processar
       </span>
     </div>
@@ -475,7 +484,7 @@ const resumoExibido = resultado
 
   <button
     type="button"
-    onClick={() => void enviarArquivo()}
+    onClick={limparFiltros}
     disabled={!arquivo || carregando}
     className="w-full rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
   >
@@ -519,14 +528,14 @@ const resumoExibido = resultado
 
             
 {opcoesFiltros && (
-  <section className="mb-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+  <section className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
 
     <div className="mb-5">
       <h3 className="text-lg font-semibold">
         Filtros do relatório
       </h3>
       <p className="mt-1 text-sm text-slate-500">
-        Personalize a análise sem reenviar a planilha.
+        Ajuste o período e o produto da planilha importada.
       </p>
     </div>
 
@@ -548,7 +557,8 @@ const resumoExibido = resultado
           min={opcoesFiltros.periodo.inicio}
           max={opcoesFiltros.periodo.fim}
           onChange={(e) => setDataInicio(e.target.value)}
-          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
+          disabled={carregando}
+          className="min-w-0 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
         />
       </div>
 
@@ -568,7 +578,8 @@ const resumoExibido = resultado
           min={opcoesFiltros.periodo.inicio}
           max={opcoesFiltros.periodo.fim}
           onChange={(e) => setDataFim(e.target.value)}
-          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
+          disabled={carregando}
+          className="min-w-0 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
         />
       </div>
 
@@ -585,7 +596,8 @@ const resumoExibido = resultado
           id="filtro-produto"
           value={produtoFiltro}
           onChange={(e) => setProdutoFiltro(e.target.value)}
-          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
+          disabled={carregando}
+          className="min-w-0 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
         >
           <option value="">Todos os produtos</option>
 
@@ -598,7 +610,7 @@ const resumoExibido = resultado
       </div>
     </div>
 
-    <div className="mt-5 flex flex-wrap gap-3">
+    <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
 
       <button
         type="button"
@@ -624,10 +636,7 @@ const resumoExibido = resultado
         type="button"
         disabled={carregando || !arquivo}
         onClick={() => {
-          setDataInicio('')
-          setDataFim('')
-          setProdutoFiltro('')
-          void enviarArquivo()
+          limparFiltros()
         }}
         className="rounded-xl border border-slate-200 px-6 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50"
       >
@@ -638,12 +647,18 @@ const resumoExibido = resultado
   </section>
 )}
 
+            {resultado?.sem_resultados && (
+              <div role="status" className="mb-6 rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">
+                Nenhuma venda encontrada para os filtros selecionados. Ajuste os filtros ou clique em Limpar filtros para visualizar todos os dados.
+              </div>
+            )}
+
             {/* Indicadores */}
             <section className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
               {indicadoresExibidos.map(({ titulo, valor, Icon }) => (
                 <div
                   key={titulo}
-                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                  className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6"
                 >
                   <div className="mb-4 flex items-center justify-between">
                     <span className="text-sm text-slate-500">
@@ -663,21 +678,32 @@ const resumoExibido = resultado
             {/* Gráficos */}
             <section className="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-2">
 
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
                 <h3 className="font-semibold">Faturamento mensal</h3>
                 <p className="mt-1 text-sm text-slate-500">
-                  Evolução das vendas em 2026
+                  Evolução das vendas no período selecionado
                 </p>
 
                 
-<div className="mt-6 h-72 w-full">
+<div className="mt-6 h-64 w-full min-w-0 sm:h-72">
+  {mesesExibidos.length === 0 ? (
+    <div className="flex h-full items-center justify-center text-center text-sm text-slate-500">
+      Nenhum faturamento disponível para os filtros selecionados.
+    </div>
+  ) : mesesExibidos.length === 1 ? (
+    <div className="flex h-full flex-col items-center justify-center rounded-xl bg-blue-50 p-4 text-center">
+      <p className="text-sm font-medium text-blue-700">{mesesExibidos[0].nome}</p>
+      <p className="mt-2 break-all text-2xl font-bold text-blue-900 sm:text-3xl">{formatarMoeda(mesesExibidos[0].valor)}</p>
+      <p className="mt-2 text-sm text-slate-500">Faturamento do único mês com vendas no período.</p>
+    </div>
+  ) : (
   <ResponsiveContainer width="100%" height="100%">
     <LineChart
       data={mesesExibidos}
       margin={{
         top: 15,
-        right: 20,
-        left: 15,
+        right: 10,
+        left: 0,
         bottom: 20,
       }}
     >
@@ -704,10 +730,10 @@ const resumoExibido = resultado
     
 
       <YAxis
-        width={95}
+        width={64}
         tickLine={false}
         axisLine={false}
-        tickMargin={14}
+        tickMargin={6}
         tick={{ fontSize: 14, fill: '#475569' }}
         tickFormatter={(valor: number) => {
           if (Math.abs(valor) >= 1000) {
@@ -747,6 +773,7 @@ const resumoExibido = resultado
       />
     </LineChart>
   </ResponsiveContainer>
+  )}
 </div>
   {/* Aviso sobre o mês parcial */}
   {mesesExibidos.some((mes) => mes.nome.endsWith('*')) && (
@@ -756,12 +783,12 @@ const resumoExibido = resultado
   )}
 
                 <p className="mt-2 text-sm text-slate-500">
-                  Período: {periodoExibido}
+                  Período selecionado: {periodoExibido}
                 </p>
               </div>
 
 
-<div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+<div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
   <h3 className="font-semibold">
     Participação por produto
   </h3>
@@ -829,7 +856,7 @@ const resumoExibido = resultado
             </section>
 
             {/* Qualidade dos dados */}
-            <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
               <h3 className="font-semibold">Qualidade dos dados</h3>
 
               <div className="mt-4 flex items-center gap-3">

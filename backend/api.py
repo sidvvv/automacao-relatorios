@@ -15,10 +15,6 @@ from fastapi import FastAPI, File, UploadFile, HTTPException, Query
 from src.limpeza import limpar
 from src.qualidade import diagnosticar
 from src.validacao import validar_estrutura, ErroValidacao
-from src.indicadores import (
-    faturamento_mensal_dashboard,
-    ranking_produtos_dashboard,
-)
 
 app = FastAPI(
     title="Automação de Relatórios API",
@@ -144,18 +140,10 @@ async def processar_relatorio(
                 == produto.strip().casefold()
             ].copy()
 
-        # Verificar se restaram vendas
-        if limpo.empty:
-            raise HTTPException(
-                status_code=422,
-                detail="Nenhuma venda encontrada para os filtros selecionados."
-            )
-
-
         # 4. Calcular indicadores
         faturamento = float(limpo["valor"].sum())
         vendas = int(len(limpo))
-        ticket_medio = faturamento / vendas
+        ticket_medio = faturamento / vendas if vendas else 0.0
         clientes = int(clientes_unicos(limpo))
 
         # 5. Preparar dados dos gráficos
@@ -181,10 +169,22 @@ async def processar_relatorio(
                 "produto": produto.strip() if produto else None,
             },
 
+            "sem_resultados": limpo.empty,
+            # Limites consultados não dependem das vendas do produto filtrado.
+            "periodo_selecionado": {
+                "inicio": (
+                    data_inicio.isoformat()
+                    if data_inicio else periodo_disponivel["inicio"]
+                ),
+                "fim": (
+                    data_fim.isoformat()
+                    if data_fim else periodo_disponivel["fim"]
+                ),
+            },
             "periodo": {
                 "inicio": limpo["data"].min().date().isoformat(),
                 "fim": limpo["data"].max().date().isoformat()
-            },
+            } if not limpo.empty else None,
             "indicadores": {
                 "faturamento": round(faturamento, 2),
                 "vendas": vendas,
