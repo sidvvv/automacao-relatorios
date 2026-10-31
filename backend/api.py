@@ -1,3 +1,9 @@
+from backend.historico import (
+    inicializar_banco,
+    salvar_processamento,
+    listar_processamentos,
+    buscar_processamento,
+)
 from src.indicadores import (
     faturamento_mensal_dashboard,
     ranking_produtos_dashboard,
@@ -21,6 +27,8 @@ app = FastAPI(
     description="API para limpeza, análise e geração de relatórios.",
     version="1.0.0"
 )
+
+inicializar_banco()
 
 TAMANHO_MAXIMO = 10 * 1024 * 1024  # 10 MB
 
@@ -151,7 +159,7 @@ async def processar_relatorio(
         produtos = ranking_produtos_dashboard(limpo)
 
         # 6. Retornar JSON para o dashboard
-        return {
+        resposta = {
             "arquivo": nome,
             
             "filtros_disponiveis": {
@@ -200,10 +208,38 @@ async def processar_relatorio(
                     resumo["duplicadas_removidas"]
                 ),
                 "campos_corrigidos": int(
-                    resumo["campos_corrigidos"]
-                )
-            }
+                resumo["campos_corrigidos"]
+            )
         }
+    }
+
+        processamento_id = salvar_processamento(
+        arquivo=nome,
+        status="sucesso",
+
+        periodo_inicio=(
+            resposta["periodo"]["inicio"]
+            if resposta["periodo"]
+            else None
+        ),
+
+        periodo_fim=(
+            resposta["periodo"]["fim"]
+            if resposta["periodo"]
+            else None
+        ),
+
+        filtros=resposta["filtros_aplicados"],
+
+        indicadores=resposta["indicadores"],
+
+        resumo_limpeza=resposta["resumo_limpeza"],
+    )
+
+        resposta["processamento_id"] = processamento_id
+
+        return resposta
+        
 
     except HTTPException:
         raise
@@ -225,3 +261,27 @@ async def processar_relatorio(
             status_code=500,
             detail="Erro interno ao processar a planilha."
         ) from erro
+
+@app.get("/api/historico")
+def obter_historico(limite: int = 50):
+    limite = max(1, min(limite, 200))
+
+    return {
+        "processamentos": listar_processamentos(limite)
+    }
+
+
+@app.get("/api/historico/{processamento_id}")
+def obter_processamento(processamento_id: int):
+
+    processamento = buscar_processamento(
+        processamento_id
+    )
+
+    if processamento is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Processamento não encontrado."
+        )
+
+    return processamento

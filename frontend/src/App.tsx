@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import Historico from "./components/Historico";
+
+import { useState } from "react";
 
 import {
   LayoutDashboard,
@@ -11,7 +13,7 @@ import {
   Receipt,
   Users,
   CheckCircle2,
-} from 'lucide-react'
+} from "lucide-react";
 
 import {
   ResponsiveContainer,
@@ -21,316 +23,305 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-} from 'recharts'
+} from "recharts";
 
 import GraficoRoscaProdutos, {
   CORES_PRODUTOS,
-} from './components/GraficoRoscaProdutos'
+} from "./components/GraficoRoscaProdutos";
 
 const indicadores = [
   {
-    titulo: 'Faturamento',
-    valor: 'R$ 426.074,60',
+    titulo: "Faturamento",
+    valor: "R$ 426.074,60",
     Icon: Wallet,
   },
   {
-    titulo: 'Vendas',
-    valor: '1.200',
+    titulo: "Vendas",
+    valor: "1.200",
     Icon: ShoppingCart,
   },
   {
-    titulo: 'Ticket médio',
-    valor: 'R$ 355,06',
+    titulo: "Ticket médio",
+    valor: "R$ 355,06",
     Icon: Receipt,
   },
   {
-    titulo: 'Clientes únicos',
-    valor: '80',
+    titulo: "Clientes únicos",
+    valor: "80",
     Icon: Users,
   },
-]
+];
 
 const produtos = [
-  { nome: 'Jaqueta', percentual: 36.54 },
-  { nome: 'Tênis', percentual: 30.19 },
-  { nome: 'Calça jeans', percentual: 17.74 },
-  { nome: 'Camiseta', percentual: 7.58 },
-  { nome: 'Boné', percentual: 5.89 },
-  { nome: 'Meia', percentual: 2.06 },
-]
+  { nome: "Jaqueta", percentual: 36.54 },
+  { nome: "Tênis", percentual: 30.19 },
+  { nome: "Calça jeans", percentual: 17.74 },
+  { nome: "Camiseta", percentual: 7.58 },
+  { nome: "Boné", percentual: 5.89 },
+  { nome: "Meia", percentual: 2.06 },
+];
 
 const meses = [
-  { nome: 'Jan', valor: 41519.7 },
-  { nome: 'Fev', valor: 46217.6 },
-  { nome: 'Mar', valor: 43352.2 },
-  { nome: 'Abr', valor: 46981.1 },
-  { nome: 'Mai', valor: 46693.3 },
-  { nome: 'Jun', valor: 42613.8 },
-  { nome: 'Jul', valor: 48695.7 },
-  { nome: 'Ago', valor: 43391.3 },
-  { nome: 'Set', valor: 43536.8 },
-  { nome: 'Out*', valor: 23073.1 },
-]
+  { nome: "Jan", valor: 41519.7 },
+  { nome: "Fev", valor: 46217.6 },
+  { nome: "Mar", valor: 43352.2 },
+  { nome: "Abr", valor: 46981.1 },
+  { nome: "Mai", valor: 46693.3 },
+  { nome: "Jun", valor: 42613.8 },
+  { nome: "Jul", valor: 48695.7 },
+  { nome: "Ago", valor: 43391.3 },
+  { nome: "Set", valor: 43536.8 },
+  { nome: "Out*", valor: 23073.1 },
+];
 
-
-
-type Periodo = { inicio: string; fim: string }
+type Periodo = { inicio: string; fim: string };
 
 type RespostaAPI = {
-  sem_resultados: boolean
-  periodo_selecionado: Periodo
-  
-filtros_disponiveis: {
-  produtos: string[]
-  periodo: {
-    inicio: string
-    fim: string
-  }
-}
+  sem_resultados: boolean;
+  periodo_selecionado: Periodo;
 
-filtros_aplicados: {
-  data_inicio: string | null
-  data_fim: string | null
-  produto: string | null
-}
+  filtros_disponiveis: {
+    produtos: string[];
+    periodo: {
+      inicio: string;
+      fim: string;
+    };
+  };
 
-  arquivo: string
+  filtros_aplicados: {
+    data_inicio: string | null;
+    data_fim: string | null;
+    produto: string | null;
+  };
 
-  periodo: Periodo | null
+  arquivo: string;
+
+  periodo: Periodo | null;
 
   indicadores: {
-    faturamento: number
-    vendas: number
-    ticket_medio: number
-    clientes_unicos: number
-  }
+    faturamento: number;
+    vendas: number;
+    ticket_medio: number;
+    clientes_unicos: number;
+  };
 
   faturamento_mensal: {
-    mes: string
-    faturamento: number
-  }[]
+    mes: string;
+    faturamento: number;
+  }[];
 
   ranking_produtos: {
-    produto: string
-    faturamento: number
-    participacao: number
-  }[]
+    produto: string;
+    faturamento: number;
+    participacao: number;
+  }[];
 
   resumo_limpeza: {
-    linhas_lidas: number
-    duplicadas_removidas: number
-    campos_corrigidos: number
-  }
-}
-
+    linhas_lidas: number;
+    duplicadas_removidas: number;
+    campos_corrigidos: number;
+  };
+};
 
 function App() {
-  
-const [arquivo, setArquivo] = useState<File | null>(null)
+  const [pagina, setPagina] = useState<"dashboard" | "historico">("dashboard");
+  const [arquivo, setArquivo] = useState<File | null>(null);
 
-const [dataInicio, setDataInicio] = useState('')
-const [dataFim, setDataFim] = useState('')
-const [produtoFiltro, setProdutoFiltro] = useState('')
+  const [dataInicio, setDataInicio] = useState("");
+  const [dataFim, setDataFim] = useState("");
+  const [produtoFiltro, setProdutoFiltro] = useState("");
 
-const [opcoesFiltros, setOpcoesFiltros] = useState<
-  RespostaAPI['filtros_disponiveis'] | null
->(null)
+  const [opcoesFiltros, setOpcoesFiltros] = useState<
+    RespostaAPI["filtros_disponiveis"] | null
+  >(null);
 
-const [arrastando, setArrastando] = useState(false)
-const [resultado, setResultado] = useState<RespostaAPI | null>(null)
-const [carregando, setCarregando] = useState(false)
-const [erro, setErro] = useState('')
+  const [arrastando, setArrastando] = useState(false);
+  const [resultado, setResultado] = useState<RespostaAPI | null>(null);
+  const [carregando, setCarregando] = useState(false);
+  const [erro, setErro] = useState("");
 
+  function selecionarArquivo(novoArquivo: File | null) {
+    setResultado(null);
+    setErro("");
+    setOpcoesFiltros(null);
+    setDataInicio("");
+    setDataFim("");
+    setProdutoFiltro("");
 
-function selecionarArquivo(novoArquivo: File | null) {
-  setResultado(null)
-  setErro('')
-  setOpcoesFiltros(null)
-  setDataInicio('')
-  setDataFim('')
-  setProdutoFiltro('')
-
-  if (!novoArquivo) {
-    setArquivo(null)
-    return
-  }
-
-  const nome = novoArquivo.name.toLowerCase()
-
-  if (!nome.endsWith('.csv') && !nome.endsWith('.xlsx')) {
-    setErro('Selecione um arquivo CSV ou Excel (.xlsx).')
-    setArquivo(null)
-    return
-  }
-
-  if (novoArquivo.size > 10 * 1024 * 1024) {
-    setErro('O arquivo deve ter no máximo 10 MB.')
-    setArquivo(null)
-    return
-  }
-
-  setArquivo(novoArquivo)
-}
-
-
-async function enviarArquivo(filtros?: {
-  data_inicio?: string
-  data_fim?: string
-  produto?: string
-}) {
-
-  if (!arquivo) return
-
-  if (arquivo.size > 10 * 1024 * 1024) {
-    setErro('O arquivo deve ter no máximo 10 MB.')
-    return
-  }
-
-  const formulario = new FormData()
-  formulario.append('arquivo', arquivo)
-
-  setCarregando(true)
-  setErro('')
-
-  try {
-
-const parametros = new URLSearchParams()
-
-if (filtros?.data_inicio) {
-  parametros.set('data_inicio', filtros.data_inicio)
-}
-
-if (filtros?.data_fim) {
-  parametros.set('data_fim', filtros.data_fim)
-}
-
-if (filtros?.produto) {
-  parametros.set('produto', filtros.produto)
-}
-
-const query = parametros.toString()
-
-const resposta = await fetch(
-  `/api/relatorios/processar${query ? `?${query}` : ''}`,
-  {
-    method: 'POST',
-    body: formulario,
-  }
-)
-
-    const dados = await resposta.json()
-
-    if (!resposta.ok) {
-      throw new Error(
-        typeof dados.detail === 'string'
-          ? dados.detail
-          : 'Não foi possível processar o arquivo.'
-      )
+    if (!novoArquivo) {
+      setArquivo(null);
+      return;
     }
 
-    setResultado(dados as RespostaAPI)
-    setOpcoesFiltros(
-  (dados as RespostaAPI).filtros_disponiveis
-)
-  } catch (error) {
-    setErro(
-      error instanceof Error
-        ? error.message
-        : 'Erro inesperado na comunicação com o servidor.'
-    )
-  } finally {
-    setCarregando(false)
+    const nome = novoArquivo.name.toLowerCase();
+
+    if (!nome.endsWith(".csv") && !nome.endsWith(".xlsx")) {
+      setErro("Selecione um arquivo CSV ou Excel (.xlsx).");
+      setArquivo(null);
+      return;
+    }
+
+    if (novoArquivo.size > 10 * 1024 * 1024) {
+      setErro("O arquivo deve ter no máximo 10 MB.");
+      setArquivo(null);
+      return;
+    }
+
+    setArquivo(novoArquivo);
   }
-}
 
-  
-function limparFiltros() {
-  setDataInicio('')
-  setDataFim('')
-  setProdutoFiltro('')
-  void enviarArquivo()
-}
+  async function enviarArquivo(filtros?: {
+    data_inicio?: string;
+    data_fim?: string;
+    produto?: string;
+  }) {
+    if (!arquivo) return;
 
-const formatarMoeda = (valor: number) =>
-  new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(valor)
+    if (arquivo.size > 10 * 1024 * 1024) {
+      setErro("O arquivo deve ter no máximo 10 MB.");
+      return;
+    }
 
-const formatarData = (data: string) => {
-  const [ano, mes, dia] = data.split('-')
-  return `${dia}/${mes}/${ano}`
-}
+    const formulario = new FormData();
+    formulario.append("arquivo", arquivo);
 
-// Indicadores reais após o upload
-const indicadoresExibidos = resultado
-  ? [
-      {
-        titulo: 'Faturamento',
-        valor: formatarMoeda(resultado.indicadores.faturamento),
-        Icon: Wallet,
-      },
-      {
-        titulo: 'Vendas',
-        valor: resultado.indicadores.vendas.toLocaleString('pt-BR'),
-        Icon: ShoppingCart,
-      },
-      {
-        titulo: 'Ticket médio',
-        valor: formatarMoeda(resultado.indicadores.ticket_medio),
-        Icon: Receipt,
-      },
-      {
-        titulo: 'Clientes únicos',
-        valor: resultado.indicadores.clientes_unicos.toLocaleString('pt-BR'),
-        Icon: Users,
-      },
-    ]
-  : indicadores
+    setCarregando(true);
+    setErro("");
 
-// Faturamento mensal real
-const mesesExibidos = resultado
-  ? resultado.faturamento_mensal.map((item) => {
-      const [ano, numeroMes] = item.mes.split('-').map(Number)
+    try {
+      const parametros = new URLSearchParams();
 
-      const nomeMes = new Date(ano, numeroMes - 1, 1)
-        .toLocaleDateString('pt-BR', { month: 'short' })
-        .replace('.', '')
-
-      return {
-        nome: `${nomeMes}/${ano}`,
-        valor: item.faturamento,
+      if (filtros?.data_inicio) {
+        parametros.set("data_inicio", filtros.data_inicio);
       }
-    })
-  : meses
 
-// Participação real por produto
-const produtosExibidos = resultado
-  ? resultado.ranking_produtos.map((item) => ({
-      nome: item.produto,
-      percentual: item.participacao,
-    }))
-  : produtos
+      if (filtros?.data_fim) {
+        parametros.set("data_fim", filtros.data_fim);
+      }
 
-const formatarPeriodo = (periodo: Periodo) =>
-  `${formatarData(periodo.inicio)} a ${formatarData(periodo.fim)}`
+      if (filtros?.produto) {
+        parametros.set("produto", filtros.produto);
+      }
 
-const periodoExibido = resultado
-  ? formatarPeriodo(resultado.periodo_selecionado)
-  : '01/01/2026 a 16/10/2026'
+      const query = parametros.toString();
 
-const resumoExibido = resultado
-  ? resultado.resumo_limpeza
-  : {
-      linhas_lidas: 1237,
-      duplicadas_removidas: 37,
-      campos_corrigidos: 42,
+      const resposta = await fetch(
+        `/api/relatorios/processar${query ? `?${query}` : ""}`,
+        {
+          method: "POST",
+          body: formulario,
+        },
+      );
+
+      const dados = await resposta.json();
+
+      if (!resposta.ok) {
+        throw new Error(
+          typeof dados.detail === "string"
+            ? dados.detail
+            : "Não foi possível processar o arquivo.",
+        );
+      }
+
+      setResultado(dados as RespostaAPI);
+      setOpcoesFiltros((dados as RespostaAPI).filtros_disponiveis);
+    } catch (error) {
+      setErro(
+        error instanceof Error
+          ? error.message
+          : "Erro inesperado na comunicação com o servidor.",
+      );
+    } finally {
+      setCarregando(false);
     }
+  }
+
+  function limparFiltros() {
+    setDataInicio("");
+    setDataFim("");
+    setProdutoFiltro("");
+    void enviarArquivo();
+  }
+
+  const formatarMoeda = (valor: number) =>
+    new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(valor);
+
+  const formatarData = (data: string) => {
+    const [ano, mes, dia] = data.split("-");
+    return `${dia}/${mes}/${ano}`;
+  };
+
+  // Indicadores reais após o upload
+  const indicadoresExibidos = resultado
+    ? [
+        {
+          titulo: "Faturamento",
+          valor: formatarMoeda(resultado.indicadores.faturamento),
+          Icon: Wallet,
+        },
+        {
+          titulo: "Vendas",
+          valor: resultado.indicadores.vendas.toLocaleString("pt-BR"),
+          Icon: ShoppingCart,
+        },
+        {
+          titulo: "Ticket médio",
+          valor: formatarMoeda(resultado.indicadores.ticket_medio),
+          Icon: Receipt,
+        },
+        {
+          titulo: "Clientes únicos",
+          valor: resultado.indicadores.clientes_unicos.toLocaleString("pt-BR"),
+          Icon: Users,
+        },
+      ]
+    : indicadores;
+
+  // Faturamento mensal real
+  const mesesExibidos = resultado
+    ? resultado.faturamento_mensal.map((item) => {
+        const [ano, numeroMes] = item.mes.split("-").map(Number);
+
+        const nomeMes = new Date(ano, numeroMes - 1, 1)
+          .toLocaleDateString("pt-BR", { month: "short" })
+          .replace(".", "");
+
+        return {
+          nome: `${nomeMes}/${ano}`,
+          valor: item.faturamento,
+        };
+      })
+    : meses;
+
+  // Participação real por produto
+  const produtosExibidos = resultado
+    ? resultado.ranking_produtos.map((item) => ({
+        nome: item.produto,
+        percentual: item.participacao,
+      }))
+    : produtos;
+
+  const formatarPeriodo = (periodo: Periodo) =>
+    `${formatarData(periodo.inicio)} a ${formatarData(periodo.fim)}`;
+
+  const periodoExibido = resultado
+    ? formatarPeriodo(resultado.periodo_selecionado)
+    : "01/01/2026 a 16/10/2026";
+
+  const resumoExibido = resultado
+    ? resultado.resumo_limpeza
+    : {
+        linhas_lidas: 1237,
+        duplicadas_removidas: 37,
+        campos_corrigidos: 42,
+      };
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <div className="flex min-h-screen">
-
         {/* Menu lateral */}
         <aside className="hidden w-64 shrink-0 bg-slate-950 px-5 py-8 text-white lg:block">
           <div className="mb-12 flex items-center gap-3">
@@ -344,20 +335,36 @@ const resumoExibido = resultado
           </div>
 
           <nav className="space-y-2 text-sm">
-            <div className="flex items-center gap-3 rounded-xl bg-blue-600 px-4 py-3 font-medium">
+            <button
+              type="button"
+              onClick={() => setPagina("dashboard")}
+              className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left font-medium ${
+                pagina === "dashboard"
+                  ? "bg-blue-600 text-white"
+                  : "text-slate-400 hover:bg-slate-900 hover:text-white"
+              }`}
+            >
               <LayoutDashboard size={19} />
               Dashboard
-            </div>
+            </button>
 
             <div className="flex items-center gap-3 px-4 py-3 text-slate-400">
               <FileUp size={19} />
               Importar dados
             </div>
 
-            <div className="flex items-center gap-3 px-4 py-3 text-slate-400">
+            <button
+              type="button"
+              onClick={() => setPagina("historico")}
+              className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left font-medium ${
+                pagina === "historico"
+                  ? "bg-blue-600 text-white"
+                  : "text-slate-400 hover:bg-slate-900 hover:text-white"
+              }`}
+            >
               <History size={19} />
               Histórico
-            </div>
+            </button>
 
             <div className="flex items-center gap-3 px-4 py-3 text-slate-400">
               <Settings size={19} />
@@ -369,287 +376,290 @@ const resumoExibido = resultado
         {/* Conteúdo principal */}
         <main className="min-w-0 flex-1 px-5 py-8 md:px-10">
           <div className="mx-auto max-w-7xl">
+            {pagina === 'historico' ? (
+              <Historico />
+            ) : (
+              <>
+            <header className="mb-8 min-w-0 break-words">
+              <p className="mb-1 text-sm font-medium text-blue-600">
+                Visão geral
+              </p>
 
+              <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                Dashboard de Vendas
+              </h1>
 
-        <header className="mb-8 min-w-0 break-words">
-          <p className="mb-1 text-sm font-medium text-blue-600">
-            Visão geral
-          </p>
+              <p className="mt-2 text-sm text-slate-500">
+                {resultado ? "Período selecionado" : "Período"}:{" "}
+                {periodoExibido}
+              </p>
 
-          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-            Dashboard de Vendas
-          </h1>
+              {resultado && (
+                <p className="mt-1 text-sm text-slate-500">
+                  Período com vendas:{" "}
+                  {resultado.periodo
+                    ? formatarPeriodo(resultado.periodo)
+                    : "Nenhuma venda no período selecionado"}
+                </p>
+              )}
 
-          <p className="mt-2 text-sm text-slate-500">
-            {resultado ? 'Período selecionado' : 'Período'}: {periodoExibido}
-          </p>
+              {!resultado && (
+                <p className="mt-2 text-xs text-amber-600">
+                  Dados de demonstração. Importe uma planilha para visualizar os
+                  resultados reais.
+                </p>
+              )}
+            </header>
 
-          {resultado && (
-            <p className="mt-1 text-sm text-slate-500">
-              Período com vendas: {resultado.periodo ? formatarPeriodo(resultado.periodo) : 'Nenhuma venda no período selecionado'}
-            </p>
-          )}
+            <section className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+              <h3 className="text-lg font-semibold">Importar planilha</h3>
 
-          {!resultado && (
-            <p className="mt-2 text-xs text-amber-600">
-              Dados de demonstração. Importe uma planilha para
-              visualizar os resultados reais.
-            </p>
-          )}
-        </header>
+              <p className="mt-1 text-sm text-slate-500">
+                Envie os dados de vendas para processamento automático.
+              </p>
 
-            
-<section className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
-  <h3 className="text-lg font-semibold">Importar planilha</h3>
+              <div className="mt-5 space-y-4">
+                <div
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    setArrastando(true);
+                  }}
+                  onDragLeave={(e) => {
+                    e.preventDefault();
+                    setArrastando(false);
+                  }}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    setArrastando(false);
 
-  <p className="mt-1 text-sm text-slate-500">
-    Envie os dados de vendas para processamento automático.
-  </p>
-
-
-<div className="mt-5 space-y-4">
-  <div
-    onDragOver={(e) => {
-      e.preventDefault()
-      setArrastando(true)
-    }}
-    onDragLeave={(e) => {
-      e.preventDefault()
-      setArrastando(false)
-    }}
-    onDrop={(e) => {
-      e.preventDefault()
-      setArrastando(false)
-
-      if (!carregando) {
-        selecionarArquivo(e.dataTransfer.files[0] ?? null)
-      }
-    }}
-    className={`rounded-2xl border-2 border-dashed p-8
+                    if (!carregando) {
+                      selecionarArquivo(e.dataTransfer.files[0] ?? null);
+                    }
+                  }}
+                  className={`rounded-2xl border-2 border-dashed p-8
       text-center transition-all duration-200 ${
         arrastando
-          ? 'border-blue-500 bg-blue-100'
-          : 'border-slate-300 bg-slate-50 hover:border-blue-400'
+          ? "border-blue-500 bg-blue-100"
+          : "border-slate-300 bg-slate-50 hover:border-blue-400"
       }`}
-  >
-    <input
-      id="arquivo-vendas"
-      type="file"
-      accept=".csv,.xlsx"
-      className="sr-only"
-      disabled={carregando}
-      onChange={(e) => {
-        selecionarArquivo(e.target.files?.[0] ?? null)
-        e.target.value = ''
-      }}
-    />
+                >
+                  <input
+                    id="arquivo-vendas"
+                    type="file"
+                    accept=".csv,.xlsx"
+                    className="sr-only"
+                    disabled={carregando}
+                    onChange={(e) => {
+                      selecionarArquivo(e.target.files?.[0] ?? null);
+                      e.target.value = "";
+                    }}
+                  />
 
-    <label
-      htmlFor="arquivo-vendas"
-      className="flex cursor-pointer flex-col items-center gap-2"
-    >
-      <FileUp size={36} className="text-blue-600" />
+                  <label
+                    htmlFor="arquivo-vendas"
+                    className="flex cursor-pointer flex-col items-center gap-2"
+                  >
+                    <FileUp size={36} className="text-blue-600" />
 
-      <span className="font-semibold text-slate-800">
-        {arrastando
-          ? 'Solte o arquivo aqui'
-          : 'Arraste sua planilha aqui'}
-      </span>
+                    <span className="font-semibold text-slate-800">
+                      {arrastando
+                        ? "Solte o arquivo aqui"
+                        : "Arraste sua planilha aqui"}
+                    </span>
 
-      <span className="text-sm text-slate-500">
-        ou clique para selecionar
-      </span>
+                    <span className="text-sm text-slate-500">
+                      ou clique para selecionar
+                    </span>
 
-      <span className="text-xs text-slate-400">
-        CSV ou Excel (.xlsx) — máximo 10 MB
-      </span>
-    </label>
-  </div>
+                    <span className="text-xs text-slate-400">
+                      CSV ou Excel (.xlsx) — máximo 10 MB
+                    </span>
+                  </label>
+                </div>
 
-  {arquivo && (
-    <div className="flex flex-col items-start gap-2 rounded-xl border border-blue-100 sm:flex-row sm:items-center sm:justify-between bg-blue-50 p-4">
-      <div className="flex min-w-0 items-center gap-3">
-        <FileUp size={20} className="shrink-0 text-blue-600" />
+                {arquivo && (
+                  <div className="flex flex-col items-start gap-2 rounded-xl border border-blue-100 sm:flex-row sm:items-center sm:justify-between bg-blue-50 p-4">
+                    <div className="flex min-w-0 items-center gap-3">
+                      <FileUp size={20} className="shrink-0 text-blue-600" />
 
-        <span className="truncate text-sm font-medium">
-          {arquivo.name}
-        </span>
-      </div>
+                      <span className="truncate text-sm font-medium">
+                        {arquivo.name}
+                      </span>
+                    </div>
 
-      <span className="shrink-0 text-xs text-blue-600">
-        Pronto para processar
-      </span>
-    </div>
-  )}
+                    <span className="shrink-0 text-xs text-blue-600">
+                      Pronto para processar
+                    </span>
+                  </div>
+                )}
 
-  <button
-    type="button"
-    onClick={limparFiltros}
-    disabled={!arquivo || carregando}
-    className="w-full rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
-  >
-    {carregando ? 'Processando...' : 'Processar planilha'}
-  </button>
+                <button
+                  type="button"
+                  onClick={limparFiltros}
+                  disabled={!arquivo || carregando}
+                  className="w-full rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {carregando ? "Processando..." : "Processar planilha"}
+                </button>
+              </div>
 
-  </div>
+              {erro && (
+                <p role="alert" className="mt-4 text-sm text-red-600">
+                  {erro}
+                </p>
+              )}
 
-  {erro && (
-    <p role="alert" className="mt-4 text-sm text-red-600">
-      {erro}
-    </p>
-  )}
+              {resultado && (
+                <div
+                  role="status"
+                  className="mt-4 flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3"
+                >
+                  <CheckCircle2
+                    size={22}
+                    className="shrink-0 text-emerald-600"
+                  />
 
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-emerald-800">
+                      Planilha processada com sucesso!
+                    </p>
 
-{resultado && (
-  <div
-    role="status"
-    className="mt-4 flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3"
-  >
-    <CheckCircle2
-      size={22}
-      className="shrink-0 text-emerald-600"
-    />
+                    <p className="mt-1 truncate text-xs text-emerald-700">
+                      {resultado.arquivo} ·{" "}
+                      {resultado.indicadores.vendas.toLocaleString("pt-BR")}{" "}
+                      vendas processadas
+                    </p>
+                  </div>
+                </div>
+              )}
+            </section>
 
-    <div className="min-w-0 flex-1">
-      <p className="text-sm font-semibold text-emerald-800">
-        Planilha processada com sucesso!
-      </p>
+            {opcoesFiltros && (
+              <section className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+                <div className="mb-5">
+                  <h3 className="text-lg font-semibold">
+                    Filtros do relatório
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-500">
+                    Ajuste o período e o produto da planilha importada.
+                  </p>
+                </div>
 
-      <p className="mt-1 truncate text-xs text-emerald-700">
-        {resultado.arquivo} ·{' '}
-        {resultado.indicadores.vendas.toLocaleString('pt-BR')}{' '}
-        vendas processadas
-      </p>
-    </div>
-  </div>
-)}
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                  {/* Data inicial */}
+                  <div>
+                    <label
+                      htmlFor="filtro-inicio"
+                      className="mb-2 block text-sm font-medium"
+                    >
+                      Data inicial
+                    </label>
 
-</section>
+                    <input
+                      id="filtro-inicio"
+                      type="date"
+                      value={dataInicio}
+                      min={opcoesFiltros.periodo.inicio}
+                      max={opcoesFiltros.periodo.fim}
+                      onChange={(e) => setDataInicio(e.target.value)}
+                      disabled={carregando}
+                      className="min-w-0 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
+                    />
+                  </div>
 
-            
-{opcoesFiltros && (
-  <section className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+                  {/* Data final */}
+                  <div>
+                    <label
+                      htmlFor="filtro-fim"
+                      className="mb-2 block text-sm font-medium"
+                    >
+                      Data final
+                    </label>
 
-    <div className="mb-5">
-      <h3 className="text-lg font-semibold">
-        Filtros do relatório
-      </h3>
-      <p className="mt-1 text-sm text-slate-500">
-        Ajuste o período e o produto da planilha importada.
-      </p>
-    </div>
+                    <input
+                      id="filtro-fim"
+                      type="date"
+                      value={dataFim}
+                      min={opcoesFiltros.periodo.inicio}
+                      max={opcoesFiltros.periodo.fim}
+                      onChange={(e) => setDataFim(e.target.value)}
+                      disabled={carregando}
+                      className="min-w-0 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
+                    />
+                  </div>
 
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                  {/* Produto */}
+                  <div>
+                    <label
+                      htmlFor="filtro-produto"
+                      className="mb-2 block text-sm font-medium"
+                    >
+                      Produto
+                    </label>
 
-      {/* Data inicial */}
-      <div>
-        <label
-          htmlFor="filtro-inicio"
-          className="mb-2 block text-sm font-medium"
-        >
-          Data inicial
-        </label>
+                    <select
+                      id="filtro-produto"
+                      value={produtoFiltro}
+                      onChange={(e) => setProdutoFiltro(e.target.value)}
+                      disabled={carregando}
+                      className="min-w-0 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
+                    >
+                      <option value="">Todos os produtos</option>
 
-        <input
-          id="filtro-inicio"
-          type="date"
-          value={dataInicio}
-          min={opcoesFiltros.periodo.inicio}
-          max={opcoesFiltros.periodo.fim}
-          onChange={(e) => setDataInicio(e.target.value)}
-          disabled={carregando}
-          className="min-w-0 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
-        />
-      </div>
+                      {opcoesFiltros.produtos.map((produto) => (
+                        <option key={produto} value={produto}>
+                          {produto}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
 
-      {/* Data final */}
-      <div>
-        <label
-          htmlFor="filtro-fim"
-          className="mb-2 block text-sm font-medium"
-        >
-          Data final
-        </label>
+                <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <button
+                    type="button"
+                    disabled={carregando || !arquivo}
+                    onClick={() => {
+                      if (dataInicio && dataFim && dataInicio > dataFim) {
+                        setErro(
+                          "A data inicial não pode ser maior que a final.",
+                        );
+                        return;
+                      }
 
-        <input
-          id="filtro-fim"
-          type="date"
-          value={dataFim}
-          min={opcoesFiltros.periodo.inicio}
-          max={opcoesFiltros.periodo.fim}
-          onChange={(e) => setDataFim(e.target.value)}
-          disabled={carregando}
-          className="min-w-0 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
-        />
-      </div>
+                      void enviarArquivo({
+                        data_inicio: dataInicio,
+                        data_fim: dataFim,
+                        produto: produtoFiltro,
+                      });
+                    }}
+                    className="rounded-xl bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+                  >
+                    {carregando ? "Atualizando..." : "Aplicar filtros"}
+                  </button>
 
-      {/* Produto */}
-      <div>
-        <label
-          htmlFor="filtro-produto"
-          className="mb-2 block text-sm font-medium"
-        >
-          Produto
-        </label>
-
-        <select
-          id="filtro-produto"
-          value={produtoFiltro}
-          onChange={(e) => setProdutoFiltro(e.target.value)}
-          disabled={carregando}
-          className="min-w-0 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm"
-        >
-          <option value="">Todos os produtos</option>
-
-          {opcoesFiltros.produtos.map((produto) => (
-            <option key={produto} value={produto}>
-              {produto}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
-
-    <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-
-      <button
-        type="button"
-        disabled={carregando || !arquivo}
-        onClick={() => {
-          if (dataInicio && dataFim && dataInicio > dataFim) {
-            setErro('A data inicial não pode ser maior que a final.')
-            return
-          }
-
-          void enviarArquivo({
-            data_inicio: dataInicio,
-            data_fim: dataFim,
-            produto: produtoFiltro,
-          })
-        }}
-        className="rounded-xl bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
-      >
-        {carregando ? 'Atualizando...' : 'Aplicar filtros'}
-      </button>
-
-      <button
-        type="button"
-        disabled={carregando || !arquivo}
-        onClick={() => {
-          limparFiltros()
-        }}
-        className="rounded-xl border border-slate-200 px-6 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50"
-      >
-        Limpar filtros
-      </button>
-
-    </div>
-  </section>
-)}
+                  <button
+                    type="button"
+                    disabled={carregando || !arquivo}
+                    onClick={() => {
+                      limparFiltros();
+                    }}
+                    className="rounded-xl border border-slate-200 px-6 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-50"
+                  >
+                    Limpar filtros
+                  </button>
+                </div>
+              </section>
+            )}
 
             {resultado?.sem_resultados && (
-              <div role="status" className="mb-6 rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">
-                Nenhuma venda encontrada para os filtros selecionados. Ajuste os filtros ou clique em Limpar filtros para visualizar todos os dados.
+              <div
+                role="status"
+                className="mb-6 rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"
+              >
+                Nenhuma venda encontrada para os filtros selecionados. Ajuste os
+                filtros ou clique em Limpar filtros para visualizar todos os
+                dados.
               </div>
             )}
 
@@ -661,198 +671,176 @@ const resumoExibido = resultado
                   className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6"
                 >
                   <div className="mb-4 flex items-center justify-between">
-                    <span className="text-sm text-slate-500">
-                      {titulo}
-                    </span>
+                    <span className="text-sm text-slate-500">{titulo}</span>
                     <div className="rounded-lg bg-blue-50 p-2 text-blue-600">
                       <Icon size={20} />
                     </div>
                   </div>
-                  <h2 className="text-2xl font-bold tracking-tight">
-                    {valor}
-                  </h2>
+                  <h2 className="text-2xl font-bold tracking-tight">{valor}</h2>
                 </div>
               ))}
             </section>
 
             {/* Gráficos */}
             <section className="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-2">
-
               <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
                 <h3 className="font-semibold">Faturamento mensal</h3>
                 <p className="mt-1 text-sm text-slate-500">
                   Evolução das vendas no período selecionado
                 </p>
 
-                
-<div className="mt-6 h-64 w-full min-w-0 sm:h-72">
-  {mesesExibidos.length === 0 ? (
-    <div className="flex h-full items-center justify-center text-center text-sm text-slate-500">
-      Nenhum faturamento disponível para os filtros selecionados.
-    </div>
-  ) : mesesExibidos.length === 1 ? (
-    <div className="flex h-full flex-col items-center justify-center rounded-xl bg-blue-50 p-4 text-center">
-      <p className="text-sm font-medium text-blue-700">{mesesExibidos[0].nome}</p>
-      <p className="mt-2 break-all text-2xl font-bold text-blue-900 sm:text-3xl">{formatarMoeda(mesesExibidos[0].valor)}</p>
-      <p className="mt-2 text-sm text-slate-500">Faturamento do único mês com vendas no período.</p>
-    </div>
-  ) : (
-  <ResponsiveContainer width="100%" height="100%">
-    <LineChart
-      data={mesesExibidos}
-      margin={{
-        top: 15,
-        right: 10,
-        left: 0,
-        bottom: 20,
-      }}
-    >
-        <CartesianGrid
-      strokeDasharray="3 3"
-      vertical={false}
-      stroke="#e2e8f0"
-    />
+                <div className="mt-6 h-64 w-full min-w-0 sm:h-72">
+                  {mesesExibidos.length === 0 ? (
+                    <div className="flex h-full items-center justify-center text-center text-sm text-slate-500">
+                      Nenhum faturamento disponível para os filtros
+                      selecionados.
+                    </div>
+                  ) : mesesExibidos.length === 1 ? (
+                    <div className="flex h-full flex-col items-center justify-center rounded-xl bg-blue-50 p-4 text-center">
+                      <p className="text-sm font-medium text-blue-700">
+                        {mesesExibidos[0].nome}
+                      </p>
+                      <p className="mt-2 break-all text-2xl font-bold text-blue-900 sm:text-3xl">
+                        {formatarMoeda(mesesExibidos[0].valor)}
+                      </p>
+                      <p className="mt-2 text-sm text-slate-500">
+                        Faturamento do único mês com vendas no período.
+                      </p>
+                    </div>
+                  ) : (
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart
+                        data={mesesExibidos}
+                        margin={{
+                          top: 15,
+                          right: 10,
+                          left: 0,
+                          bottom: 20,
+                        }}
+                      >
+                        <CartesianGrid
+                          strokeDasharray="3 3"
+                          vertical={false}
+                          stroke="#e2e8f0"
+                        />
 
-  
-      <XAxis
-        dataKey="nome"
-        tickLine={false}
-        axisLine={false}
-        tickMargin={15}
-        height={45}
-        tick={{
-          fontSize: 14,
-          fill: '#475569',
-        }}
-      />
+                        <XAxis
+                          dataKey="nome"
+                          tickLine={false}
+                          axisLine={false}
+                          tickMargin={15}
+                          height={45}
+                          tick={{
+                            fontSize: 14,
+                            fill: "#475569",
+                          }}
+                        />
 
+                        <YAxis
+                          width={64}
+                          tickLine={false}
+                          axisLine={false}
+                          tickMargin={6}
+                          tick={{ fontSize: 14, fill: "#475569" }}
+                          tickFormatter={(valor: number) => {
+                            if (Math.abs(valor) >= 1000) {
+                              return `${(valor / 1000).toLocaleString("pt-BR", {
+                                maximumFractionDigits: 1,
+                              })} mil`;
+                            }
 
-    
+                            return `R$ ${valor.toLocaleString("pt-BR", {
+                              maximumFractionDigits: 0,
+                            })}`;
+                          }}
+                        />
 
-      <YAxis
-        width={64}
-        tickLine={false}
-        axisLine={false}
-        tickMargin={6}
-        tick={{ fontSize: 14, fill: '#475569' }}
-        tickFormatter={(valor: number) => {
-          if (Math.abs(valor) >= 1000) {
-            return `${(valor / 1000).toLocaleString('pt-BR', {
-              maximumFractionDigits: 1,
-            })} mil`
-          }
+                        <Tooltip
+                          formatter={(valor) =>
+                            `R$ ${Number(valor ?? 0).toLocaleString("pt-BR", {
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            })}`
+                          }
+                        />
 
-          return `R$ ${valor.toLocaleString('pt-BR', {
-            maximumFractionDigits: 0,
-          })}`
-        }}
-      />
-
-
-
-      <Tooltip
-        formatter={(valor) =>
-          `R$ ${Number(valor ?? 0).toLocaleString(
-            'pt-BR',
-            {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            }
-          )}`
-        }
-      />
-
-      <Line
-        type="monotone"
-        dataKey="valor"
-        name="Faturamento"
-        stroke="#2563eb"
-        strokeWidth={3}
-        dot={{ r: 4, fill: '#2563eb' }}
-        activeDot={{ r: 6 }}
-      />
-    </LineChart>
-  </ResponsiveContainer>
-  )}
-</div>
-  {/* Aviso sobre o mês parcial */}
-  {mesesExibidos.some((mes) => mes.nome.endsWith('*')) && (
-    <p className="mt-3 text-xs text-slate-400">
-      * Último mês com dados parciais.
-    </p>
-  )}
+                        <Line
+                          type="monotone"
+                          dataKey="valor"
+                          name="Faturamento"
+                          stroke="#2563eb"
+                          strokeWidth={3}
+                          dot={{ r: 4, fill: "#2563eb" }}
+                          activeDot={{ r: 6 }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  )}
+                </div>
+                {/* Aviso sobre o mês parcial */}
+                {mesesExibidos.some((mes) => mes.nome.endsWith("*")) && (
+                  <p className="mt-3 text-xs text-slate-400">
+                    * Último mês com dados parciais.
+                  </p>
+                )}
 
                 <p className="mt-2 text-sm text-slate-500">
                   Período selecionado: {periodoExibido}
                 </p>
               </div>
 
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+                <h3 className="font-semibold">Participação por produto</h3>
 
-<div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
-  <h3 className="font-semibold">
-    Participação por produto
-  </h3>
+                <p className="mt-1 text-sm text-slate-500">
+                  Distribuição do faturamento
+                </p>
 
-  <p className="mt-1 text-sm text-slate-500">
-    Distribuição do faturamento
-  </p>
+                <div className="mt-6 flex flex-col items-center gap-5 lg:flex-row">
+                  {/* Gráfico de rosca */}
+                  <div className="h-56 w-full shrink-0 lg:w-52">
+                    <GraficoRoscaProdutos produtos={produtosExibidos} />
+                  </div>
 
-  <div className="mt-6 flex flex-col items-center gap-5 lg:flex-row">
+                  {/* Ranking de produtos */}
+                  <div className="w-full min-w-0 flex-1 space-y-3">
+                    {produtosExibidos.map((produto, index) => (
+                      <div key={produto.nome}>
+                        <div className="mb-1.5 flex items-center justify-between gap-2 text-sm">
+                          <span className="flex min-w-0 items-center gap-2">
+                            <span
+                              className="h-2.5 w-2.5 shrink-0 rounded-full"
+                              style={{
+                                backgroundColor:
+                                  CORES_PRODUTOS[index % CORES_PRODUTOS.length],
+                              }}
+                            />
+                            <span className="truncate">{produto.nome}</span>
+                          </span>
 
-    {/* Gráfico de rosca */}
-    <div className="h-56 w-full shrink-0 lg:w-52">
-      <GraficoRoscaProdutos
-        produtos={produtosExibidos}
-      />
-    </div>
+                          <span className="shrink-0 text-slate-500">
+                            {produto.percentual.toFixed(2)}%
+                          </span>
+                        </div>
 
-    {/* Ranking de produtos */}
-    <div className="w-full min-w-0 flex-1 space-y-3">
-      {produtosExibidos.map((produto, index) => (
-        <div key={produto.nome}>
-          <div className="mb-1.5 flex items-center justify-between gap-2 text-sm">
-            <span className="flex min-w-0 items-center gap-2">
-              <span
-                className="h-2.5 w-2.5 shrink-0 rounded-full"
-                style={{
-                  backgroundColor:
-                    CORES_PRODUTOS[
-                      index % CORES_PRODUTOS.length
-                    ],
-                }}
-              />
-              <span className="truncate">
-                {produto.nome}
-              </span>
-            </span>
-
-            <span className="shrink-0 text-slate-500">
-              {produto.percentual.toFixed(2)}%
-            </span>
-          </div>
-
-          <div className="h-2 overflow-hidden rounded-full bg-slate-100">
-            <div
-              className="h-full rounded-full transition-all duration-500"
-              style={{
-                width: `${Math.max(
-                  0,
-                  Math.min(100, produto.percentual)
-                )}%`,
-                backgroundColor:
-                  CORES_PRODUTOS[
-                    index % CORES_PRODUTOS.length
-                  ],
-              }}
-            />
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
-
-
+                        <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+                          <div
+                            className="h-full rounded-full transition-all duration-500"
+                            style={{
+                              width: `${Math.max(
+                                0,
+                                Math.min(100, produto.percentual),
+                              )}%`,
+                              backgroundColor:
+                                CORES_PRODUTOS[index % CORES_PRODUTOS.length],
+                            }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* Qualidade dos dados */}
@@ -862,18 +850,20 @@ const resumoExibido = resultado
               <div className="mt-4 flex items-center gap-3">
                 <CheckCircle2 className="text-emerald-600" size={22} />
                 <span className="text-sm text-slate-600">
-                  {resumoExibido.linhas_lidas.toLocaleString('pt-BR')} registros
+                  {resumoExibido.linhas_lidas.toLocaleString("pt-BR")} registros
                   analisados · {resumoExibido.duplicadas_removidas} duplicatas
-                  removidas · {resumoExibido.campos_corrigidos} campos corrigidos
+                  removidas · {resumoExibido.campos_corrigidos} campos
+                  corrigidos
                 </span>
               </div>
             </section>
-
+                </>
+             )}
           </div>
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
