@@ -1,3 +1,6 @@
+from fastapi.responses import StreamingResponse, FileResponse
+from src.relatorio import gerar_relatorio
+
 from backend.historico import (
     inicializar_banco,
     salvar_processamento,
@@ -36,6 +39,71 @@ COLUNAS_OBRIGATORIAS = [
     "data", "produto", "cliente", "quantidade", "valor"
 ]
 
+async def preparar_exportacao(
+    arquivo: UploadFile,
+    data_inicio: date | None = None,
+    data_fim: date | None = None,
+    produto: str | None = None,
+):
+    nome = arquivo.filename or "dados"
+    extensao = Path(nome).suffix.lower()
+
+    if extensao not in {".csv", ".xlsx"}:
+        raise HTTPException(
+            status_code=422,
+            detail="Formato não suportado. Use CSV ou XLSX."
+        )
+
+    conteudo = await arquivo.read()
+
+    try:
+        if extensao == ".csv":
+            df = pd.read_csv(BytesIO(conteudo))
+        else:
+            df = pd.read_excel(
+                BytesIO(conteudo),
+                engine="openpyxl"
+            )
+
+        validar_estrutura(df, COLUNAS_OBRIGATORIAS)
+
+        limpo, resumo = limpar(df)
+
+        if data_inicio:
+            limpo = limpo[
+                limpo["data"].dt.date >= data_inicio
+            ].copy()
+
+        if data_fim:
+            limpo = limpo[
+                limpo["data"].dt.date <= data_fim
+            ].copy()
+
+        if produto and produto.strip():
+            limpo = limpo[
+                limpo["produto"]
+                .astype("string")
+                .str.strip()
+                .str.casefold()
+                == produto.strip().casefold()
+            ].copy()
+
+        if limpo.empty:
+            raise HTTPException(
+                status_code=422,
+                detail="Nenhum dado encontrado para exportar."
+            )
+
+        return limpo, resumo
+
+    except HTTPException:
+        raise
+
+    except Exception as erro:
+        raise HTTPException(
+            status_code=422,
+            detail=f"Não foi possível preparar a exportação: {erro}"
+        ) from erro
 
 @app.get("/api/health")
 def verificar_saude():
@@ -285,3 +353,74 @@ def obter_processamento(processamento_id: int):
         )
 
     return processamento
+
+@app.post("/api/relatorios/exportar/dados")
+async def exportar_dados_tratados(
+    arquivo: UploadFile = File(...),
+    data_inicio: date | None = Query(default=None),
+    data_fim: date | None = Query(default=None),
+    produto: str | None = Query(default=None),
+):
+    limpo, _ = await preparar_exportacao(
+        arquivo,
+        data_inicio,
+        data_fim,
+        produto,
+    )
+
+    limpo = limpo.copy()
+    limpo["data"] = limpo["data"].dt.strftime("%d/%m/%Y")
+
+    buffer = BytesIO()
+
+    with pd.ExcelWriter(
+        buffer,
+        engine="openpyxl"
+    ) as writer:
+        limpo.to_excel(
+            writer,
+            index=False,
+            sheet_name="Dados tratados"
+        )
+
+    buffer.seek(0)
+
+    return StreamingResponse(
+        buffer,
+        media_type=(
+            "application/vnd.openxmlformats-officedocument."
+            "spreadsheetml.sheet"
+        ),
+        headers={
+            "Content-Disposition":
+                'attachment; filename="dados_tratados.xlsx"'
+        },
+    )
+
+@app.post("/api/relatorios/exportar/relatorio")
+async def exportar_relatorio_executivo(
+    arquivo: UploadFile = File(...),
+    data_inicio: date | None = Query(default=None),
+    data_fim: date | None = Query(default=None),
+    produto: str | None = Query(default=None),
+):
+    limpo, resumo = await preparar_exportacao(
+        arquivo,
+        data_inicio,
+        data_fim,
+        produto,
+    )
+
+    caminho = gerar_relatorio(
+        limpo,
+        resumo
+    )
+
+    return FileResponse(
+        path=caminho,
+        media_type=(
+            "application/vnd.openxmlformats-officedocument."
+            "spreadsheetml.sheet"
+        ),
+        filename="relatorio_executivo.xlsx",
+    )
